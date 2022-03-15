@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 const Container = styled.div`
   width: 100%;
-  background: #161b22;
+  background: #303031;
   padding: 16px;
   display: grid;
   place-content: center;

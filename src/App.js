@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Toolbar from './components/Toolbar';
 import Edit from './components/Edit';
 import Preview from './components/Preview';
+import GlobalStyle from './globalStyles';
 
 const Container = styled.div`
   width: 100%;
@@ -11,13 +12,14 @@ const Container = styled.div`
 
 function App() {
   return (
-    <div>
+    <>
+      <GlobalStyle />
       <Toolbar />
       <Container>
         <Edit />
         <Preview />
       </Container>
-    </div>
+    </>
   );
 }
 
