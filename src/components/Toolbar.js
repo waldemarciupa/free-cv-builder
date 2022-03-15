@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import { Pdf } from './Preview';
+import { useSelector } from 'react-redux';
 
 const Container = styled.div`
   width: 100%;
@@ -15,15 +16,14 @@ const Heading = styled.h1`
   color: #fff;
 `;
 
-const Toolbar = ({ name, image }) => {
+const Toolbar = () => {
+  const profile = useSelector((state) => state.profile);
+
   return (
     <Container>
       <Heading>Resume</Heading>
       {/* TODO: style download button */}
-      <PDFDownloadLink
-        document={<Pdf name={name} image={image} />}
-        fileName='CV.pdf'
-      >
+      <PDFDownloadLink document={<Pdf profile={profile} />} fileName='CV.pdf'>
         {({ loading }) => (loading ? 'Loading document...' : 'Download now!')}
       </PDFDownloadLink>
     </Container>

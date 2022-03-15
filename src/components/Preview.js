@@ -7,8 +7,11 @@ import {
   Image,
   Text,
 } from '@react-pdf/renderer';
+import { useSelector } from 'react-redux';
 
-const Preview = ({ name, image }) => {
+const Preview = () => {
+  const profile = useSelector((state) => state.profile);
+
   return (
     <Container>
       <PDFViewer
@@ -19,29 +22,29 @@ const Preview = ({ name, image }) => {
           height: '75%',
         }}
       >
-        <Pdf name={name} image={image} />
+        <Pdf profile={profile} />
       </PDFViewer>
     </Container>
   );
 };
 
-export const Pdf = ({ name, image }) => {
+export const Pdf = ({ profile }) => {
   return (
     <Document>
       <Page size='A4'>
         <View width='100%'>
-          {image && (
+          {profile.image && (
             <Image
               style={{
                 width: '60px',
                 height: '60px',
                 borderRadius: '90',
               }}
-              src={image}
+              src={profile.image}
               cache={true}
             />
           )}
-          <Text>{name}</Text>
+          <Text>{profile.name}</Text>
         </View>
       </Page>
     </Document>
