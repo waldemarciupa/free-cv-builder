@@ -6,6 +6,7 @@ import CustomFileInput from './CustomFileInput';
 
 const Container = styled.div`
   width: 50%;
+  padding: 12px 28px;
 `;
 
 const Edit = () => {
@@ -16,16 +17,20 @@ const Edit = () => {
     <Container>
       <form>
         <CustomFileInput />
+        <div>
+          <Label>First name</Label>
+          <input
+            value={profile.name}
+            onChange={(e) => {
+              dispatch(setName(e.target.value));
+            }}
+          />
+        </div>
 
-        <Label>First name</Label>
-        <input
-          value={profile.name}
-          onChange={(e) => {
-            dispatch(setName(e.target.value));
-          }}
-        />
-        <Label>Last name: </Label>
-        <input />
+        <div>
+          <Label>Last name: </Label>
+          <input />
+        </div>
       </form>
     </Container>
   );

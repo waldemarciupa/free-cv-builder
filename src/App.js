@@ -6,7 +6,7 @@ import GlobalStyle from './globalStyles';
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 68px);
   display: flex;
 `;
 

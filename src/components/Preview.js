@@ -6,6 +6,7 @@ import {
   View,
   Image,
   Text,
+  StyleSheet,
 } from '@react-pdf/renderer';
 import { useSelector } from 'react-redux';
 
@@ -16,10 +17,11 @@ const Preview = () => {
     <Container>
       <PDFViewer
         showToolbar={false}
-        // TODO: style viewer window
         style={{
-          width: '80%',
-          height: '75%',
+          width: '100%',
+          height: '100%',
+          overflow: 'hidden',
+          border: 'none',
         }}
       >
         <Pdf profile={profile} />
@@ -28,11 +30,15 @@ const Preview = () => {
   );
 };
 
+const styles = StyleSheet.create({
+  page: { padding: 20 },
+});
+
 export const Pdf = ({ profile }) => {
   return (
-    <Document>
-      <Page size='A4'>
-        <View width='100%'>
+    <Document title='Resume'>
+      <Page size='A4' style={styles.page}>
+        <View>
           {profile.image && (
             <Image
               style={{
@@ -44,7 +50,14 @@ export const Pdf = ({ profile }) => {
               cache={true}
             />
           )}
-          <Text>{profile.name}</Text>
+          <Text
+            style={{
+              fontSize: '12px',
+              paddingTop: '10px',
+            }}
+          >
+            {profile.name}
+          </Text>
         </View>
       </Page>
     </Document>
