@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
 const StyledLabel = styled.label`
-  font-weight: 500;
+  display: block;
+  margin-bottom: 8px;
+  line-height: 1.25rem;
+  font-weight: 700;
 `;
 
 const Label = ({ htmlFor, children }) => {

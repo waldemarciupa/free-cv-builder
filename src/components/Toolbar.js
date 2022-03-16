@@ -6,16 +6,24 @@ import { useSelector } from 'react-redux';
 const Container = styled.div`
   width: 100%;
   background: #303031;
-  padding: 12px 26px;
+  padding: 12px 48px;
   display: grid;
   place-content: center;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
-const Heading = styled.h1`
+const Logo = styled.h1`
+  margin: 0;
+  padding: 0;
+  line-height: 14px;
   font-size: 14px;
+`;
+
+const Link = styled.a`
   color: #fff;
+  text-decoration: none;
 `;
 
 const styles = StyleSheet.create({
@@ -36,7 +44,9 @@ const Toolbar = () => {
 
   return (
     <Container>
-      <Heading>Resume</Heading>
+      <Logo>
+        <Link href='/'>Free CV Builder</Link>
+      </Logo>
       <PDFDownloadLink
         style={styles.link}
         document={<Pdf profile={profile} />}

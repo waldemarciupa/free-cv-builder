@@ -45,6 +45,7 @@ export const Pdf = ({ profile }) => {
                 width: '60px',
                 height: '60px',
                 borderRadius: '90',
+                objectFit: 'cover',
               }}
               src={profile.image}
               cache={true}
