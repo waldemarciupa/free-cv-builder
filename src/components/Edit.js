@@ -17,6 +17,12 @@ const Heading = styled.h2`
   margin: 20px 0;
 `;
 
+const InputWrapper = styled.div`
+  width: 100%;
+  display: ${(props) => props.display};
+  gap: ${(props) => props.gap};
+`;
+
 const Edit = () => {
   const profile = useSelector((state) => state.profile);
   const dispatch = useDispatch();
@@ -25,11 +31,11 @@ const Edit = () => {
     <Container>
       <form>
         <Heading>Personal details</Heading>
-        <div style={{ display: 'flex', gap: '28px' }}>
+        <InputWrapper display='flex' gap='28px'>
           <CustomFileInput />
-          <div style={{ width: '100%' }}>
-            <div style={{ width: '100%', display: 'flex', gap: '28px' }}>
-              <div style={{ width: '100%' }}>
+          <InputWrapper>
+            <InputWrapper display='flex' gap='28px'>
+              <InputWrapper>
                 <Label>First name</Label>
                 <Input
                   value={profile.name}
@@ -38,30 +44,26 @@ const Edit = () => {
                     dispatch(setName(e.target.value));
                   }}
                 />
-              </div>
-              <div style={{ width: '100%' }}>
+              </InputWrapper>
+              <InputWrapper>
                 <Label>Last name: </Label>
                 <Input placeholder='Enter your surname' />
-              </div>
-            </div>
-
-            <div>
-              <div>
-                <Label>Position: </Label>
-                <Input placeholder='Enter your wanted or current job position' />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div>
+              </InputWrapper>
+            </InputWrapper>
+            <InputWrapper>
+              <Label>Position: </Label>
+              <Input placeholder='Enter your wanted or current job position' />
+            </InputWrapper>
+          </InputWrapper>
+        </InputWrapper>
+        <InputWrapper>
           <Label>Email: </Label>
           <Input placeholder='Enter your email' />
-        </div>
-        <div>
+        </InputWrapper>
+        <InputWrapper>
           <Label>Phone: </Label>
           <Input placeholder='Enter your phone number' />
-        </div>
+        </InputWrapper>
       </form>
     </Container>
   );
