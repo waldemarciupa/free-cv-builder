@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { setName } from '../features/profile/profileSlice';
+import {
+  setName,
+  setSurname,
+  setPosition,
+  setEmail,
+  setPhone,
+} from '../features/profile/profileSlice';
 import Label from './Label';
 import CustomFileInput from './CustomFileInput';
 import Input from './Input';
@@ -47,22 +53,42 @@ const Edit = () => {
               </InputWrapper>
               <InputWrapper>
                 <Label>Last name: </Label>
-                <Input placeholder='Enter your surname' />
+                <Input
+                  placeholder='Enter your surname'
+                  handler={(e) => {
+                    dispatch(setSurname(e.target.value));
+                  }}
+                />
               </InputWrapper>
             </InputWrapper>
             <InputWrapper>
               <Label>Position: </Label>
-              <Input placeholder='Enter your wanted or current job position' />
+              <Input
+                placeholder='Enter your wanted or current job position'
+                handler={(e) => {
+                  dispatch(setPosition(e.target.value));
+                }}
+              />
             </InputWrapper>
           </InputWrapper>
         </InputWrapper>
         <InputWrapper>
           <Label>Email: </Label>
-          <Input placeholder='Enter your email' />
+          <Input
+            placeholder='Enter your email'
+            handler={(e) => {
+              dispatch(setEmail(e.target.value));
+            }}
+          />
         </InputWrapper>
         <InputWrapper>
           <Label>Phone: </Label>
-          <Input placeholder='Enter your phone number' />
+          <Input
+            placeholder='Enter your phone number'
+            handler={(e) => {
+              dispatch(setPhone(e.target.value));
+            }}
+          />
         </InputWrapper>
       </form>
     </Container>
