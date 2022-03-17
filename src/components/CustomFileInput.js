@@ -29,7 +29,7 @@ const CustomFileInput = () => {
       <div>
         <label htmlFor='photo'>
           <StyledImage
-            src='https://placehold.jp/f4f4f5/666666/100x100.png?text=photo.jpg'
+            src='https://placehold.jp/f4f4f5/666666/118x118.png?text=photo.jpg'
             height='200'
             alt=''
           ></StyledImage>
@@ -55,9 +55,9 @@ const StyledInput = styled.input`
 `;
 
 const StyledImage = styled.img`
-  width: 100px;
-  height: 100px;
-  border-radius: 5px;
+  width: 118px;
+  height: 118px;
+  border-radius: 10px;
   cursor: pointer;
   object-fit: cover;
 `;

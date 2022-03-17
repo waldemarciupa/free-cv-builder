@@ -25,20 +25,42 @@ const Edit = () => {
     <Container>
       <form>
         <Heading>Personal details</Heading>
-        <CustomFileInput />
-        <div>
-          <Label>First name</Label>
-          <Input
-            value={profile.name}
-            handler={(e) => {
-              dispatch(setName(e.target.value));
-            }}
-          />
+        <div style={{ display: 'flex', gap: '28px' }}>
+          <CustomFileInput />
+          <div style={{ width: '100%' }}>
+            <div style={{ width: '100%', display: 'flex', gap: '28px' }}>
+              <div style={{ width: '100%' }}>
+                <Label>First name</Label>
+                <Input
+                  value={profile.name}
+                  placeholder='Enter your name'
+                  handler={(e) => {
+                    dispatch(setName(e.target.value));
+                  }}
+                />
+              </div>
+              <div style={{ width: '100%' }}>
+                <Label>Last name: </Label>
+                <Input placeholder='Enter your surname' />
+              </div>
+            </div>
+
+            <div>
+              <div>
+                <Label>Position: </Label>
+                <Input placeholder='Enter your wanted or current job position' />
+              </div>
+            </div>
+          </div>
         </div>
 
         <div>
-          <Label>Last name: </Label>
-          <Input />
+          <Label>Email: </Label>
+          <Input placeholder='Enter your email' />
+        </div>
+        <div>
+          <Label>Phone: </Label>
+          <Input placeholder='Enter your phone number' />
         </div>
       </form>
     </Container>
