@@ -19,7 +19,8 @@ const CustomFileInput = () => {
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      preview.src = '';
+      preview.src =
+        'https://placehold.jp/f4f4f5/666666/118x118.png?text=photo.jpg';
     }
   }
 

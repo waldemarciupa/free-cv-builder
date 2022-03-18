@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  name: 'John',
-  surname: 'Doe',
-  position: 'JavaScript Developer',
-  email: 'john@example.com',
+  name: 'Artur',
+  surname: 'Wilson',
+  position: 'Software Engineer',
+  email: 'artur@example.com',
   phone: '777-666-555',
   image: null,
 };

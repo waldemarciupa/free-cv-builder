@@ -32,35 +32,76 @@ const Preview = () => {
 
 const styles = StyleSheet.create({
   page: { padding: 20 },
+  head: {
+    display: 'flex',
+    flexDirection: 'row',
+    paddingBottom: '20px',
+    borderBottom: '2px solid #f4f4f5',
+  },
+  image: {
+    width: '100px',
+    height: '100px',
+    borderRadius: '5px',
+    objectFit: 'cover',
+    marginRight: '20px',
+  },
+  column: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  nameRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    fontSize: '28px',
+    textTransform: 'uppercase',
+  },
+  position: {
+    fontSize: '14px',
+    paddingTop: '8px',
+  },
+  content: {
+    paddingTop: '20px',
+  },
+  aside: {
+    borderRight: '2px solid #f4f4f5',
+  },
 });
 
 export const Pdf = ({ profile }) => {
   return (
     <Document title='Resume'>
       <Page size='A4' style={styles.page}>
-        <View
-          style={{
-            borderBottom: '2px solid #f4f4f5',
-            display: 'flex',
-            flexDirection: 'row',
-            paddingBottom: '20px',
-          }}
-        >
+        <View style={styles.head}>
           {profile.image && (
-            <View>
-              <Image
-                style={{
-                  width: '100px',
-                  height: '100px',
-                  borderRadius: '5px',
-                  objectFit: 'cover',
-                  marginRight: '20px',
-                }}
-                src={profile.image}
-                cache={true}
-              />
-            </View>
+            <Image src={profile.image} cache={true} style={styles.image} />
           )}
+          <View style={styles.column}>
+            <View style={styles.nameRow}>
+              <Text>{profile.name} </Text>
+              <Text>{profile.surname}</Text>
+            </View>
+            <Text style={styles.position}>{profile.position}</Text>
+          </View>
+        </View>
+        <View style={styles.content}>
+          <View style={styles.aside}>
+            <Text
+              style={{
+                fontSize: '12px',
+              }}
+            >
+              {profile.email}
+            </Text>
+            <Text
+              style={{
+                fontSize: '12px',
+                paddingTop: '10px',
+              }}
+            >
+              {profile.phone}
+            </Text>
+          </View>
           <View>
             <Text
               style={{
@@ -68,42 +109,10 @@ export const Pdf = ({ profile }) => {
                 paddingTop: '10px',
               }}
             >
-              {profile.name}
-            </Text>
-            <Text
-              style={{
-                fontSize: '12px',
-                paddingTop: '10px',
-              }}
-            >
-              {profile.surname}
-            </Text>
-            <Text
-              style={{
-                fontSize: '12px',
-                paddingTop: '10px',
-              }}
-            >
-              {profile.position}
+              Main
             </Text>
           </View>
         </View>
-        <Text
-          style={{
-            fontSize: '12px',
-            paddingTop: '10px',
-          }}
-        >
-          {profile.email}
-        </Text>
-        <Text
-          style={{
-            fontSize: '12px',
-            paddingTop: '10px',
-          }}
-        >
-          {profile.phone}
-        </Text>
       </Page>
     </Document>
   );
