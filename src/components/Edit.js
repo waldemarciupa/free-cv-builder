@@ -44,8 +44,8 @@ const Edit = () => {
               <InputWrapper>
                 <Label>First name</Label>
                 <Input
-                  value={profile.name}
                   placeholder='Enter your name'
+                  value={profile.name}
                   handler={(e) => {
                     dispatch(setName(e.target.value));
                   }}
@@ -55,6 +55,7 @@ const Edit = () => {
                 <Label>Last name: </Label>
                 <Input
                   placeholder='Enter your surname'
+                  value={profile.surname}
                   handler={(e) => {
                     dispatch(setSurname(e.target.value));
                   }}
@@ -65,6 +66,7 @@ const Edit = () => {
               <Label>Position: </Label>
               <Input
                 placeholder='Enter your wanted or current job position'
+                value={profile.position}
                 handler={(e) => {
                   dispatch(setPosition(e.target.value));
                 }}
@@ -76,6 +78,7 @@ const Edit = () => {
           <Label>Email: </Label>
           <Input
             placeholder='Enter your email'
+            value={profile.email}
             handler={(e) => {
               dispatch(setEmail(e.target.value));
             }}
@@ -85,6 +88,7 @@ const Edit = () => {
           <Label>Phone: </Label>
           <Input
             placeholder='Enter your phone number'
+            value={profile.phone}
             handler={(e) => {
               dispatch(setPhone(e.target.value));
             }}
