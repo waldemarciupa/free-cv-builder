@@ -52,7 +52,7 @@ const Toolbar = () => {
         document={<Pdf profile={profile} />}
         fileName='CV.pdf'
       >
-        {({ loading }) => (loading ? 'Loading' : 'Download PDF')}
+        {({ loading }) => (loading ? 'Loading...' : 'Download PDF')}
       </PDFDownloadLink>
     </Container>
   );

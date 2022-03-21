@@ -50,9 +50,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
   },
-  nameRow: {
+  flexRow: {
     display: 'flex',
     flexDirection: 'row',
+  },
+  name: {
     fontSize: '28px',
     textTransform: 'uppercase',
   },
@@ -60,11 +62,24 @@ const styles = StyleSheet.create({
     fontSize: '14px',
     paddingTop: '8px',
   },
+  contact: {
+    fontSize: '10px',
+    paddingTop: '10px',
+  },
   content: {
-    paddingTop: '20px',
+    display: 'flex',
+    flexDirection: 'row',
   },
   aside: {
     borderRight: '2px solid #f4f4f5',
+    paddingTop: '20px',
+    minHeight: '675px',
+    width: '25%',
+  },
+  main: {
+    paddingLeft: '20px',
+    paddingTop: '20px',
+    width: '75%',
   },
 });
 
@@ -77,11 +92,17 @@ export const Pdf = ({ profile }) => {
             <Image src={profile.image} cache={true} style={styles.image} />
           )}
           <View style={styles.column}>
-            <View style={styles.nameRow}>
-              <Text>{profile.name} </Text>
-              <Text>{profile.surname}</Text>
+            <View style={styles.flexRow}>
+              <Text style={styles.name}>{profile.name} </Text>
+              <Text style={styles.name}>{profile.surname}</Text>
             </View>
             <Text style={styles.position}>{profile.position}</Text>
+            {(profile.email.length > 0 || profile.phone.length > 0) && (
+              <View style={[styles.flexRow, styles.contact]}>
+                <Text>{profile.email} </Text>
+                <Text>{profile.phone}</Text>
+              </View>
+            )}
           </View>
         </View>
         <View style={styles.content}>
@@ -91,22 +112,34 @@ export const Pdf = ({ profile }) => {
                 fontSize: '12px',
               }}
             >
-              {profile.email}
+              Skills
             </Text>
             <Text
               style={{
                 fontSize: '12px',
-                paddingTop: '10px',
               }}
             >
-              {profile.phone}
+              HTML
             </Text>
-          </View>
-          <View>
             <Text
               style={{
                 fontSize: '12px',
-                paddingTop: '10px',
+              }}
+            >
+              CSS
+            </Text>
+            <Text
+              style={{
+                fontSize: '12px',
+              }}
+            >
+              JavaScript
+            </Text>
+          </View>
+          <View style={styles.main}>
+            <Text
+              style={{
+                fontSize: '12px',
               }}
             >
               Main
