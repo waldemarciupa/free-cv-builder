@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100px',
+    minWidth: '100px',
     height: '100px',
     borderRadius: '5px',
     objectFit: 'cover',
@@ -53,6 +54,7 @@ const styles = StyleSheet.create({
   flexRow: {
     display: 'flex',
     flexDirection: 'row',
+    flexWrap: 'wrap',
   },
   name: {
     fontSize: '28px',
@@ -60,11 +62,10 @@ const styles = StyleSheet.create({
   },
   position: {
     fontSize: '14px',
-    paddingTop: '8px',
   },
   contact: {
     fontSize: '10px',
-    paddingTop: '10px',
+    paddingTop: '8px',
   },
   iconsContainer: {
     display: 'flex',
@@ -73,6 +74,7 @@ const styles = StyleSheet.create({
   },
   iconsContainerMR: {
     marginRight: '6px',
+    paddingBottom: '4px',
   },
   icon: {
     width: '10px',
@@ -110,24 +112,46 @@ export const Pdf = ({ profile }) => {
               <Text style={styles.name}>{profile.surname}</Text>
             </View>
             <Text style={styles.position}>{profile.position}</Text>
-            {(profile.email.length > 0 || profile.phone.length > 0) && (
+            {(profile.email.length > 0 ||
+              profile.phone.length ||
+              profile.location.length > 0) && (
               <View style={[styles.flexRow, styles.contact]}>
-                <View style={[styles.iconsContainer, styles.iconsContainerMR]}>
-                  <Image src={'./email.png'} cache={true} style={styles.icon} />
-                  <Text>{profile.email} </Text>
-                </View>
-                <View style={[styles.iconsContainer, styles.iconsContainerMR]}>
-                  <Image src={'./phone.png'} cache={true} style={styles.icon} />
-                  <Text>{profile.phone} </Text>
-                </View>
-                <View style={styles.iconsContainer}>
-                  <Image
-                    src={'./location.png'}
-                    cache={true}
-                    style={styles.icon}
-                  />
-                  <Text>{profile.location} </Text>
-                </View>
+                {profile.email.length > 0 && (
+                  <View
+                    style={[styles.iconsContainer, styles.iconsContainerMR]}
+                  >
+                    <Image
+                      src={'./email.png'}
+                      cache={true}
+                      style={styles.icon}
+                    />
+                    <Text>{profile.email} </Text>
+                  </View>
+                )}
+                {profile.phone.length > 0 && (
+                  <View
+                    style={[styles.iconsContainer, styles.iconsContainerMR]}
+                  >
+                    <Image
+                      src={'./phone.png'}
+                      cache={true}
+                      style={styles.icon}
+                    />
+                    <Text>{profile.phone} </Text>
+                  </View>
+                )}
+                {profile.location.length > 0 && (
+                  <View
+                    style={[styles.iconsContainer, styles.iconsContainerMR]}
+                  >
+                    <Image
+                      src={'./location.png'}
+                      cache={true}
+                      style={styles.icon}
+                    />
+                    <Text>{profile.location} </Text>
+                  </View>
+                )}
               </View>
             )}
           </View>
