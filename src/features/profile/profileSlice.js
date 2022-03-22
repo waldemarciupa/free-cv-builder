@@ -7,6 +7,7 @@ const initialState = {
   email: 'artur@example.com',
   phone: '777-666-555',
   location: 'London, England',
+  skills: [],
   image: null,
 };
 
@@ -35,6 +36,13 @@ export const profileSlice = createSlice({
     setImage: (state, action) => {
       state.image = action.payload;
     },
+    addSkill: (state, action) => {
+      state.skills.push({
+        id: Date.now(),
+        title: '',
+        level: '',
+      });
+    },
   },
 });
 
@@ -46,6 +54,7 @@ export const {
   setPhone,
   setLocation,
   setImage,
+  addSkill,
 } = profileSlice.actions;
 
 export default profileSlice.reducer;

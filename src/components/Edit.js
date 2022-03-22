@@ -7,6 +7,7 @@ import {
   setEmail,
   setPhone,
   setLocation,
+  addSkill,
 } from '../features/profile/profileSlice';
 import Label from './Label';
 import CustomFileInput from './CustomFileInput';
@@ -28,6 +29,38 @@ const InputWrapper = styled.div`
   width: 100%;
   display: ${(props) => props.display};
   gap: ${(props) => props.gap};
+`;
+
+const Button = styled.button`
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  display: grid;
+  place-content: center;
+  background-color: #f4f4f5;
+  cursor: pointer;
+  transition: background-color 0.1s linear;
+
+  &:hover {
+    background-color: rgba(57, 76, 96, 0.15);
+  }
+`;
+
+const EditField = styled.div`
+  border: none;
+  border-radius: 4px;
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: inset 0 0 0 1px #878787;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  & > div {
+    width: 100%;
+  }
 `;
 
 const Edit = () => {
@@ -105,6 +138,40 @@ const Edit = () => {
             }}
           />
         </InputWrapper>
+        <Heading>Skills</Heading>
+        {profile.skills.length > 0 &&
+          profile.skills.map((skill) => (
+            <EditField key={skill.id}>
+              <div>
+                <Label>Skill: </Label>
+                <Input
+                  placeholder='Enter your skill'
+                  value={skill.title}
+                  handler={(e) => {
+                    dispatch(setLocation(e.target.value));
+                  }}
+                />
+              </div>
+              <div>
+                <Label>Level: </Label>
+                <Input
+                  placeholder='Enter your level'
+                  value={skill.level}
+                  handler={(e) => {
+                    dispatch(setLocation(e.target.value));
+                  }}
+                />
+              </div>
+            </EditField>
+          ))}
+        <Button
+          type='button'
+          onClick={() => {
+            dispatch(addSkill());
+          }}
+        >
+          Add skill
+        </Button>
       </form>
     </Container>
   );
