@@ -7,7 +7,14 @@ const initialState = {
   email: 'artur@example.com',
   phone: '777-666-555',
   location: 'London, England',
-  skills: [],
+  skills: [
+    {
+      id: '1647958919539',
+      title: 'HTML',
+      level: 'Beginner',
+    },
+  ],
+
   image: null,
 };
 
@@ -36,11 +43,22 @@ export const profileSlice = createSlice({
     setImage: (state, action) => {
       state.image = action.payload;
     },
-    addSkill: (state, action) => {
+    addSkill: (state) => {
       state.skills.push({
         id: Date.now(),
         title: '',
         level: '',
+      });
+    },
+    updateSkill: (state, action) => {
+      state.skills = state.skills.map((skill) => {
+        return skill.id === action.payload.id
+          ? {
+              ...skill,
+              title: action.payload.title,
+              level: action.payload.level,
+            }
+          : skill;
       });
     },
   },
@@ -55,6 +73,7 @@ export const {
   setLocation,
   setImage,
   addSkill,
+  updateSkill,
 } = profileSlice.actions;
 
 export default profileSlice.reducer;

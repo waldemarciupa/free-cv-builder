@@ -8,6 +8,7 @@ import {
   setPhone,
   setLocation,
   addSkill,
+  updateSkill,
 } from '../features/profile/profileSlice';
 import Label from './Label';
 import CustomFileInput from './CustomFileInput';
@@ -148,7 +149,13 @@ const Edit = () => {
                   placeholder='Enter your skill'
                   value={skill.title}
                   handler={(e) => {
-                    dispatch(setLocation(e.target.value));
+                    dispatch(
+                      updateSkill({
+                        id: skill.id,
+                        title: e.target.value,
+                        level: skill.level,
+                      })
+                    );
                   }}
                 />
               </div>
@@ -158,7 +165,13 @@ const Edit = () => {
                   placeholder='Enter your level'
                   value={skill.level}
                   handler={(e) => {
-                    dispatch(setLocation(e.target.value));
+                    dispatch(
+                      updateSkill({
+                        id: skill.id,
+                        title: skill.title,
+                        level: e.target.value,
+                      })
+                    );
                   }}
                 />
               </div>
