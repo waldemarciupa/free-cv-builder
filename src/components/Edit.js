@@ -6,6 +6,7 @@ import {
   setPosition,
   setEmail,
   setPhone,
+  setLocation,
 } from '../features/profile/profileSlice';
 import Label from './Label';
 import CustomFileInput from './CustomFileInput';
@@ -91,6 +92,16 @@ const Edit = () => {
             value={profile.phone}
             handler={(e) => {
               dispatch(setPhone(e.target.value));
+            }}
+          />
+        </InputWrapper>
+        <InputWrapper>
+          <Label>Location: </Label>
+          <Input
+            placeholder='Enter your location'
+            value={profile.location}
+            handler={(e) => {
+              dispatch(setLocation(e.target.value));
             }}
           />
         </InputWrapper>

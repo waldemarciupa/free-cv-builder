@@ -66,6 +66,19 @@ const styles = StyleSheet.create({
     fontSize: '10px',
     paddingTop: '10px',
   },
+  iconsContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  iconsContainerMR: {
+    marginRight: '6px',
+  },
+  icon: {
+    width: '10px',
+    height: '10px',
+    marginRight: '4px',
+  },
   content: {
     display: 'flex',
     flexDirection: 'row',
@@ -99,8 +112,22 @@ export const Pdf = ({ profile }) => {
             <Text style={styles.position}>{profile.position}</Text>
             {(profile.email.length > 0 || profile.phone.length > 0) && (
               <View style={[styles.flexRow, styles.contact]}>
-                <Text>{profile.email} </Text>
-                <Text>{profile.phone}</Text>
+                <View style={[styles.iconsContainer, styles.iconsContainerMR]}>
+                  <Image src={'./email.png'} cache={true} style={styles.icon} />
+                  <Text>{profile.email} </Text>
+                </View>
+                <View style={[styles.iconsContainer, styles.iconsContainerMR]}>
+                  <Image src={'./phone.png'} cache={true} style={styles.icon} />
+                  <Text>{profile.phone} </Text>
+                </View>
+                <View style={styles.iconsContainer}>
+                  <Image
+                    src={'./location.png'}
+                    cache={true}
+                    style={styles.icon}
+                  />
+                  <Text>{profile.location} </Text>
+                </View>
               </View>
             )}
           </View>
