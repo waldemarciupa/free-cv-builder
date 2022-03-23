@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -56,6 +57,19 @@ const EditField = styled.div`
   margin-bottom: 20px;
   padding: 20px;
   box-shadow: inset 0 0 0 1px #878787;
+`;
+
+const EditFieldHead = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+
+  & > div > div:first-child {
+    font-weight: 700;
+  }
+`;
+
+const EditFieldMain = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 20px;
@@ -65,7 +79,20 @@ const EditField = styled.div`
   }
 `;
 
+const Dropdown = styled.button`
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  ${(props) => props.isRotate && 'transform: rotate(180deg);'}
+`;
+
 const Edit = () => {
+  const [isRotate, setIsRotate] = useState(false);
+
   const profile = useSelector((state) => state.profile);
   const dispatch = useDispatch();
 
@@ -144,38 +171,66 @@ const Edit = () => {
         {profile.skills.length > 0 &&
           profile.skills.map((skill) => (
             <EditField key={skill.id}>
-              <div>
-                <Label>Skill: </Label>
-                <Input
-                  placeholder='Enter your skill'
-                  value={skill.title}
-                  handler={(e) => {
-                    dispatch(
-                      updateSkill({
-                        id: skill.id,
-                        title: e.target.value,
-                        level: skill.level,
-                      })
-                    );
-                  }}
-                />
-              </div>
-              <div>
-                <Label>Level: </Label>
-                <Input
-                  placeholder='Enter your level'
-                  value={skill.level}
-                  handler={(e) => {
-                    dispatch(
-                      updateSkill({
-                        id: skill.id,
-                        title: skill.title,
-                        level: e.target.value,
-                      })
-                    );
-                  }}
-                />
-              </div>
+              <EditFieldHead>
+                <div>
+                  <div>
+                    {skill.title ? skill.title : '[Skill not specified yet]'}
+                  </div>
+                  <div>{skill.level ? skill.level : <div>&nbsp;</div>}</div>
+                </div>
+                <div>
+                  <Dropdown
+                    isRotate={isRotate}
+                    type='button'
+                    onClick={() => {
+                      setIsRotate(!isRotate);
+                    }}
+                  >
+                    <svg
+                      width='20'
+                      height='20'
+                      xmlns='http://www.w3.org/2000/svg'
+                      fill='#878787'
+                    >
+                      <path d='M5.293 7.293a1 1 0 0 1 1.414 0L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414z'></path>
+                    </svg>
+                  </Dropdown>
+                </div>
+              </EditFieldHead>
+              <EditFieldMain>
+                <div>
+                  <Label>Skill: </Label>
+                  <Input
+                    placeholder='Enter your skill'
+                    value={skill.title}
+                    handler={(e) => {
+                      dispatch(
+                        updateSkill({
+                          id: skill.id,
+                          title: e.target.value,
+                          level: skill.level,
+                        })
+                      );
+                    }}
+                  />
+                </div>
+                <div>
+                  <Label>Level: </Label>
+                  <Input
+                    placeholder='Enter your level'
+                    value={skill.level}
+                    handler={(e) => {
+                      dispatch(
+                        updateSkill({
+                          id: skill.id,
+                          title: skill.title,
+                          level: e.target.value,
+                        })
+                      );
+                    }}
+                  />
+                </div>
+              </EditFieldMain>
             </EditField>
           ))}
         <Button
