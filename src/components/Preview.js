@@ -96,6 +96,14 @@ const styles = StyleSheet.create({
     paddingTop: '20px',
     width: '75%',
   },
+  headline: {
+    fontSize: '12px',
+    marginBottom: '10px',
+  },
+  paragraph: {
+    fontSize: '10px',
+    marginBottom: '6px',
+  },
 });
 
 export const Pdf = ({ profile }) => {
@@ -158,34 +166,19 @@ export const Pdf = ({ profile }) => {
         </View>
         <View style={styles.content}>
           <View style={styles.aside}>
-            <Text
-              style={{
-                fontSize: '12px',
-              }}
-            >
-              Skills
-            </Text>
-            <Text
-              style={{
-                fontSize: '12px',
-              }}
-            >
-              HTML
-            </Text>
-            <Text
-              style={{
-                fontSize: '12px',
-              }}
-            >
-              CSS
-            </Text>
-            <Text
-              style={{
-                fontSize: '12px',
-              }}
-            >
-              JavaScript
-            </Text>
+            {profile.skills.length > 0 && (
+              <View>
+                <Text style={styles.headline}>Skills</Text>
+                {profile.skills.map(
+                  (skill) =>
+                    skill.title.length > 0 && (
+                      <Text style={styles.paragraph}>
+                        {skill.title} {skill.level && `- ${skill.level}`}
+                      </Text>
+                    )
+                )}
+              </View>
+            )}
           </View>
           <View style={styles.main}>
             <Text

@@ -17,6 +17,7 @@ import Input from './Input';
 const Container = styled.div`
   width: 50%;
   padding: 20px 48px;
+  overflow: auto;
 `;
 
 const Heading = styled.h2`
