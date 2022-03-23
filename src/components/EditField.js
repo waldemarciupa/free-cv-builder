@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Label from './Label';
 import Input from './Input';
 import { useDispatch } from 'react-redux';
-import { updateSkill } from '../features/profile/profileSlice';
+import { deleteSkill, updateSkill } from '../features/profile/profileSlice';
 
 const StyledEditField = styled.div`
   border: none;
@@ -21,6 +21,7 @@ const EditFieldHead = styled.div`
     props.isRotate ? '15px 20px 15px 20px' : '15px 20px 0 20px'};
   margin-bottom: 8px;
   cursor: pointer;
+  min-height: 68px;
 
   & > div > div:first-child {
     font-weight: 700;
@@ -76,17 +77,16 @@ const EditField = ({ skill }) => {
   const [isRotate, setIsRotate] = useState(false);
   const dispatch = useDispatch();
 
+  const handleRotate = () => {
+    setIsRotate(!isRotate);
+  };
+
   return (
     <StyledEditField key={skill.id}>
-      <EditFieldHead
-        isRotate={isRotate}
-        onClick={() => {
-          setIsRotate(!isRotate);
-        }}
-      >
+      <EditFieldHead isRotate={isRotate} onClick={handleRotate}>
         <div>
           <div>{skill.title ? skill.title : '[Skill not specified yet]'}</div>
-          <div>{skill.level ? skill.level : <div>&nbsp;</div>}</div>
+          <div>{skill.level ? skill.level : ' '}</div>
         </div>
         <div>
           <Dropdown isRotate={isRotate} type='button'>
@@ -136,8 +136,17 @@ const EditField = ({ skill }) => {
         </div>
       </EditFieldMain>
       <EditFieldButtons isRotate={isRotate}>
-        <EditFieldButton type='button'>Delete</EditFieldButton>
-        <EditFieldButton type='button'>Save</EditFieldButton>
+        <EditFieldButton
+          type='button'
+          onClick={() => {
+            dispatch(deleteSkill({ id: skill.id }));
+          }}
+        >
+          Delete
+        </EditFieldButton>
+        <EditFieldButton type='button' onClick={handleRotate}>
+          Save
+        </EditFieldButton>
       </EditFieldButtons>
     </StyledEditField>
   );

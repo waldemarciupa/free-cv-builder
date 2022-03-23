@@ -126,7 +126,9 @@ const Edit = () => {
         </InputWrapper>
         <Heading>Skills</Heading>
         {profile.skills.length > 0 &&
-          profile.skills.map((skill) => <EditField skill={skill} />)}
+          profile.skills.map((skill) => (
+            <EditField key={skill.id} skill={skill} />
+          ))}
         <Button
           type='button'
           onClick={() => {

@@ -172,7 +172,7 @@ export const Pdf = ({ profile }) => {
                 {profile.skills.map(
                   (skill) =>
                     skill.title.length > 0 && (
-                      <Text style={styles.paragraph}>
+                      <Text key={skill.id} style={styles.paragraph}>
                         {skill.title} {skill.level && `- ${skill.level}`}
                       </Text>
                     )

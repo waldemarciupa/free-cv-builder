@@ -61,6 +61,11 @@ export const profileSlice = createSlice({
           : skill;
       });
     },
+    deleteSkill: (state, action) => {
+      state.skills = state.skills.filter((skill) => {
+        return skill.id !== action.payload.id;
+      });
+    },
   },
 });
 
@@ -74,6 +79,7 @@ export const {
   setImage,
   addSkill,
   updateSkill,
+  deleteSkill,
 } = profileSlice.actions;
 
 export default profileSlice.reducer;
