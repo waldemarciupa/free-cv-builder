@@ -25,7 +25,14 @@ const Heading = styled.h2`
   font-size: 18px;
   line-height: 26px;
   font-weight: 700;
-  margin: 20px 0;
+  margin: 20px 0 2px;
+`;
+
+const Description = styled.p`
+  margin-top: 2px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #737373;
 `;
 
 const InputWrapper = styled.div`
@@ -58,6 +65,10 @@ const Edit = () => {
     <Container>
       <form>
         <Heading>Personal details</Heading>
+        <Description>
+          In this section you can enter your personal data, not all fields are
+          required.
+        </Description>
         <InputWrapper display='flex' gap='28px'>
           <CustomFileInput />
           <InputWrapper>
@@ -125,32 +136,44 @@ const Edit = () => {
             }}
           />
         </InputWrapper>
-        <Heading>Skills</Heading>
-        {profile.skills.length > 0 &&
-          profile.skills.map((skill) => (
-            <EditField key={skill.id} skill={skill} />
-          ))}
-        <Button
-          type='button'
-          onClick={() => {
-            dispatch(addSkill());
-          }}
-        >
-          Add skill
-        </Button>
-        <Heading>Employment History</Heading>
-        {profile.employments.length > 0 &&
-          profile.employments.map((employment) => (
-            <EditField key={employment.id} employment={employment} />
-          ))}
-        <Button
-          type='button'
-          onClick={() => {
-            dispatch(addEmployment());
-          }}
-        >
-          Add employment
-        </Button>
+        <div>
+          <Heading>Employment history</Heading>
+          <Description>
+            Here you can show your employment history, don't hesitate to include
+            the description, but it's not required.
+          </Description>
+          {profile.employments.length > 0 &&
+            profile.employments.map((employment) => (
+              <EditField key={employment.id} employment={employment} />
+            ))}
+          <Button
+            type='button'
+            onClick={() => {
+              dispatch(addEmployment());
+            }}
+          >
+            Add employment
+          </Button>
+        </div>
+        <div>
+          <Heading>Skills</Heading>
+          <Description>
+            You can add the most important skills you know. You don't need to
+            specify your skill level.
+          </Description>
+          {profile.skills.length > 0 &&
+            profile.skills.map((skill) => (
+              <EditField key={skill.id} skill={skill} />
+            ))}
+          <Button
+            type='button'
+            onClick={() => {
+              dispatch(addSkill());
+            }}
+          >
+            Add skill
+          </Button>
+        </div>
       </form>
     </Container>
   );
