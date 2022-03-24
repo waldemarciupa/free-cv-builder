@@ -73,7 +73,7 @@ const EditFieldButton = styled.button`
   }
 `;
 
-const EditField = ({ skill }) => {
+const EditField = ({ skill, employment }) => {
   const [isRotate, setIsRotate] = useState(false);
   const dispatch = useDispatch();
 
@@ -82,12 +82,23 @@ const EditField = ({ skill }) => {
   };
 
   return (
-    <StyledEditField key={skill.id}>
+    <StyledEditField>
       <EditFieldHead isRotate={isRotate} onClick={handleRotate}>
-        <div>
-          <div>{skill.title ? skill.title : '[Skill not specified yet]'}</div>
-          <div>{skill.level ? skill.level : ' '}</div>
-        </div>
+        {skill && (
+          <div>
+            <div>{skill.title ? skill.title : '[Skill not specified yet]'}</div>
+            <div>{skill.level ? skill.level : ' '}</div>
+          </div>
+        )}
+        {employment && (
+          <div>
+            <div>
+              {employment.position
+                ? employment.position
+                : '[Employment not specified yet]'}
+            </div>
+          </div>
+        )}
         <div>
           <Dropdown isRotate={isRotate} type='button'>
             <svg
@@ -101,7 +112,7 @@ const EditField = ({ skill }) => {
           </Dropdown>
         </div>
       </EditFieldHead>
-      <EditFieldMain isRotate={isRotate}>
+      {/* <EditFieldMain isRotate={isRotate}>
         <div>
           <Label>Skill: </Label>
           <Input
@@ -147,7 +158,7 @@ const EditField = ({ skill }) => {
         <EditFieldButton type='button' onClick={handleRotate}>
           Save
         </EditFieldButton>
-      </EditFieldButtons>
+      </EditFieldButtons> */}
     </StyledEditField>
   );
 };

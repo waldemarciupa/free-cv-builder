@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
   aside: {
     borderRight: '2px solid #f4f4f5',
     paddingTop: '20px',
+    paddingRight: '16px',
     minHeight: '675px',
     width: '25%',
   },

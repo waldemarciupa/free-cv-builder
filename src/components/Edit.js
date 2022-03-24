@@ -8,6 +8,7 @@ import {
   setPhone,
   setLocation,
   addSkill,
+  addEmployment,
 } from '../features/profile/profileSlice';
 import Label from './Label';
 import Input from './Input';
@@ -136,6 +137,19 @@ const Edit = () => {
           }}
         >
           Add skill
+        </Button>
+        <Heading>Employment History</Heading>
+        {profile.employments.length > 0 &&
+          profile.employments.map((employment) => (
+            <EditField key={employment.id} employment={employment} />
+          ))}
+        <Button
+          type='button'
+          onClick={() => {
+            dispatch(addEmployment());
+          }}
+        >
+          Add employment
         </Button>
       </form>
     </Container>

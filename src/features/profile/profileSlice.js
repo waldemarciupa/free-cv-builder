@@ -14,7 +14,16 @@ const initialState = {
       level: 'Beginner',
     },
   ],
-
+  employments: [
+    {
+      id: '1647958919539',
+      position: 'Junior Frontend Developer',
+      employer: 'ECorp',
+      city: 'New York',
+      startDate: '11.11.11',
+      endDate: '22.22.22',
+    },
+  ],
   image: null,
 };
 
@@ -66,6 +75,15 @@ export const profileSlice = createSlice({
         return skill.id !== action.payload.id;
       });
     },
+    addEmployment: (state) => {
+      state.employments.push({
+        id: Date.now(),
+        position: '',
+        employer: '',
+        startDate: '',
+        endDate: '',
+      });
+    },
   },
 });
 
@@ -80,6 +98,7 @@ export const {
   addSkill,
   updateSkill,
   deleteSkill,
+  addEmployment,
 } = profileSlice.actions;
 
 export default profileSlice.reducer;
