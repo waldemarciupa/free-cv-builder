@@ -5,7 +5,7 @@ import Input from './Input';
 import { useDispatch } from 'react-redux';
 import { deleteSkill, updateSkill } from '../features/profile/profileSlice';
 
-const StyledEditField = styled.div`
+const StyledField = styled.div`
   border: none;
   border-radius: 4px;
   margin: 0;
@@ -13,7 +13,7 @@ const StyledEditField = styled.div`
   box-shadow: inset 0 0 0 1px #878787;
 `;
 
-const EditFieldHead = styled.div`
+const FieldHead = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,7 +36,7 @@ const Dropdown = styled.div`
   transform: ${(props) => (props.isRotate ? 'rotate(0deg)' : 'rotate(180deg)')};
 `;
 
-const EditFieldMain = styled.div`
+const FieldMain = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 20px;
@@ -49,7 +49,7 @@ const EditFieldMain = styled.div`
   }
 `;
 
-const EditFieldButtons = styled.div`
+const FieldButtons = styled.div`
   display: flex;
   justify-content: flex-end;
   gap: 8px;
@@ -57,7 +57,7 @@ const EditFieldButtons = styled.div`
   ${(props) => props.isRotate && 'display: none;'}
 `;
 
-const EditFieldButton = styled.button`
+const FieldButton = styled.button`
   border: none;
   border-radius: 4px;
   font-size: 12px;
@@ -73,7 +73,7 @@ const EditFieldButton = styled.button`
   }
 `;
 
-const EditField = ({ skill, employment }) => {
+const Field = ({ skill, employment }) => {
   const [isRotate, setIsRotate] = useState(false);
   const dispatch = useDispatch();
 
@@ -82,8 +82,8 @@ const EditField = ({ skill, employment }) => {
   };
 
   return (
-    <StyledEditField>
-      <EditFieldHead isRotate={isRotate} onClick={handleRotate}>
+    <StyledField>
+      <FieldHead isRotate={isRotate} onClick={handleRotate}>
         {skill && (
           <div>
             <div>{skill.title ? skill.title : '[Skill not specified yet]'}</div>
@@ -111,8 +111,8 @@ const EditField = ({ skill, employment }) => {
             </svg>
           </Dropdown>
         </div>
-      </EditFieldHead>
-      {/* <EditFieldMain isRotate={isRotate}>
+      </FieldHead>
+      {/* <FieldMain isRotate={isRotate}>
         <div>
           <Label>Skill: </Label>
           <Input
@@ -145,22 +145,22 @@ const EditField = ({ skill, employment }) => {
             }}
           />
         </div>
-      </EditFieldMain>
-      <EditFieldButtons isRotate={isRotate}>
-        <EditFieldButton
+      </FieldMain>
+      <FieldButtons isRotate={isRotate}>
+        <FieldButton
           type='button'
           onClick={() => {
             dispatch(deleteSkill({ id: skill.id }));
           }}
         >
           Delete
-        </EditFieldButton>
-        <EditFieldButton type='button' onClick={handleRotate}>
+        </FieldButton>
+        <FieldButton type='button' onClick={handleRotate}>
           Save
-        </EditFieldButton>
-      </EditFieldButtons> */}
-    </StyledEditField>
+        </FieldButton>
+      </FieldButtons> */}
+    </StyledField>
   );
 };
 
-export default EditField;
+export default Field;

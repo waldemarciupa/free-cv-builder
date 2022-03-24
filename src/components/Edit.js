@@ -12,8 +12,8 @@ import {
 } from '../features/profile/profileSlice';
 import Label from './Label';
 import Input from './Input';
-import CustomFileInput from './CustomFileInput';
-import EditField from './EditField';
+import FileInput from './FileInput';
+import Field from './Field';
 import Section from './Section';
 
 const Container = styled.div`
@@ -41,7 +41,7 @@ const Edit = () => {
           required.`}
         >
           <InputWrapper display='flex' gap='28px'>
-            <CustomFileInput />
+            <FileInput />
             <InputWrapper>
               <InputWrapper display='flex' gap='28px'>
                 <InputWrapper>
@@ -117,7 +117,7 @@ const Edit = () => {
         >
           {profile.employments.length > 0 &&
             profile.employments.map((employment) => (
-              <EditField key={employment.id} employment={employment} />
+              <Field key={employment.id} employment={employment} />
             ))}
         </Section>
         <Section
@@ -129,7 +129,7 @@ const Edit = () => {
         >
           {profile.skills.length > 0 &&
             profile.skills.map((skill) => (
-              <EditField key={skill.id} skill={skill} />
+              <Field key={skill.id} skill={skill} />
             ))}
         </Section>
       </form>

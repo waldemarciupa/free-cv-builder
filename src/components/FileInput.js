@@ -3,7 +3,24 @@ import Label from './Label';
 import { useDispatch } from 'react-redux';
 import { setImage } from '../features/profile/profileSlice';
 
-const CustomFileInput = () => {
+const StyledInput = styled.input`
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+`;
+
+const StyledImage = styled.img`
+  width: 118px;
+  height: 118px;
+  border-radius: 10px;
+  cursor: pointer;
+  object-fit: cover;
+`;
+
+const FileInput = () => {
   const dispatch = useDispatch();
 
   function previewFile() {
@@ -46,21 +63,4 @@ const CustomFileInput = () => {
   );
 };
 
-const StyledInput = styled.input`
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-`;
-
-const StyledImage = styled.img`
-  width: 118px;
-  height: 118px;
-  border-radius: 10px;
-  cursor: pointer;
-  object-fit: cover;
-`;
-
-export default CustomFileInput;
+export default FileInput;
