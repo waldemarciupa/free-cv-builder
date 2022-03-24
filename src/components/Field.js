@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Label from './Label';
 import Input from './Input';
 import { useDispatch } from 'react-redux';
-import { deleteSkill, updateSkill } from '../features/profile/profileSlice';
+import { updateSkill } from '../features/profile/profileSlice';
 
 const StyledField = styled.div`
   border: none;
@@ -17,8 +17,7 @@ const FieldHead = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${(props) =>
-    props.isRotate ? '15px 20px 15px 20px' : '15px 20px 0 20px'};
+  padding: 15px 20px 15px 20px;
   margin-bottom: 8px;
   cursor: pointer;
   min-height: 68px;
@@ -73,7 +72,7 @@ const FieldButton = styled.button`
   }
 `;
 
-const Field = ({ skill, employment }) => {
+const Field = ({ skill, employment, deleteHandler }) => {
   const [isRotate, setIsRotate] = useState(false);
   const dispatch = useDispatch();
 
@@ -112,45 +111,49 @@ const Field = ({ skill, employment }) => {
           </Dropdown>
         </div>
       </FieldHead>
-      {/* <FieldMain isRotate={isRotate}>
-        <div>
-          <Label>Skill: </Label>
-          <Input
-            placeholder='Enter your skill'
-            value={skill.title}
-            handler={(e) => {
-              dispatch(
-                updateSkill({
-                  id: skill.id,
-                  title: e.target.value,
-                  level: skill.level,
-                })
-              );
-            }}
-          />
-        </div>
-        <div>
-          <Label>Level: </Label>
-          <Input
-            placeholder='Enter your level'
-            value={skill.level}
-            handler={(e) => {
-              dispatch(
-                updateSkill({
-                  id: skill.id,
-                  title: skill.title,
-                  level: e.target.value,
-                })
-              );
-            }}
-          />
-        </div>
+      <FieldMain isRotate={isRotate}>
+        {skill && (
+          <>
+            <div>
+              <Label>Skill: </Label>
+              <Input
+                placeholder='Enter your skill'
+                value={skill.title}
+                handler={(e) => {
+                  dispatch(
+                    updateSkill({
+                      id: skill.id,
+                      title: e.target.value,
+                      level: skill.level,
+                    })
+                  );
+                }}
+              />
+            </div>
+            <div>
+              <Label>Level: </Label>
+              <Input
+                placeholder='Enter your level'
+                value={skill.level}
+                handler={(e) => {
+                  dispatch(
+                    updateSkill({
+                      id: skill.id,
+                      title: skill.title,
+                      level: e.target.value,
+                    })
+                  );
+                }}
+              />
+            </div>
+          </>
+        )}
       </FieldMain>
       <FieldButtons isRotate={isRotate}>
         <FieldButton
           type='button'
           onClick={() => {
-            dispatch(deleteSkill({ id: skill.id }));
+            dispatch(deleteHandler({ id: skill.id }));
           }}
         >
           Delete
@@ -158,7 +161,7 @@ const Field = ({ skill, employment }) => {
         <FieldButton type='button' onClick={handleRotate}>
           Save
         </FieldButton>
-      </FieldButtons> */}
+      </FieldButtons>
     </StyledField>
   );
 };

@@ -9,6 +9,7 @@ import {
   setLocation,
   addSkill,
   addEmployment,
+  deleteSkill,
 } from '../features/profile/profileSlice';
 import Label from './Label';
 import Input from './Input';
@@ -129,7 +130,7 @@ const Edit = () => {
         >
           {profile.skills.length > 0 &&
             profile.skills.map((skill) => (
-              <Field key={skill.id} skill={skill} />
+              <Field key={skill.id} skill={skill} deleteHandler={deleteSkill} />
             ))}
         </Section>
       </form>
