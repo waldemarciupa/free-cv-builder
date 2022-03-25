@@ -36,15 +36,15 @@ const Dropdown = styled.div`
 `;
 
 const FieldMain = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 20px;
   padding: 0 20px;
   margin-bottom: 8px;
   ${(props) => props.isRotate && 'display: none;'}
 
   & > div {
-    width: 100%;
+    min-width: 100%;
   }
 `;
 
@@ -70,6 +70,44 @@ const FieldButton = styled.button`
   &:hover {
     background-color: rgba(57, 76, 96, 0.15);
   }
+`;
+
+const DateWrapper = styled.div`
+  display: grid;
+  grid-template-columns: minmax(20px, auto) minmax(20px, auto);
+  gap: 10px;
+`;
+
+const StyledDateInput = styled.input`
+  width: 100%;
+  height: 40px;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 400;
+  border: none;
+  border-radius: 4px;
+  margin: 0;
+  margin-bottom: 8px;
+  padding: 12px;
+  box-shadow: inset 0 0 0 1px #878787;
+
+  @media (max-width: 1366px) {
+    padding: 12px 2px 12px 8px;
+  }
+`;
+
+const Textarea = styled.div`
+  width: 100%;
+  height: 120px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  border: none;
+  border-radius: 4px;
+  margin: 0;
+  margin-bottom: 8px;
+  padding: 12px;
+  box-shadow: inset 0 0 0 1px #878787;
 `;
 
 const Field = ({ skill, employment, deleteHandler }) => {
@@ -145,6 +183,65 @@ const Field = ({ skill, employment, deleteHandler }) => {
                   );
                 }}
               />
+            </div>
+          </>
+        )}
+        {employment && (
+          <>
+            <div>
+              <Label>Position: </Label>
+              <Input
+                placeholder='Enter your position'
+                value={employment.position}
+                handler={(e) => {}}
+              />
+            </div>
+            <div>
+              <Label>Employer: </Label>
+              <Input
+                placeholder='Enter your employer'
+                value={employment.employer}
+                handler={(e) => {}}
+              />
+            </div>
+            <DateWrapper>
+              <div>
+                <Label>Start date: </Label>
+                <StyledDateInput
+                  type='date'
+                  placeholder='Enter your start date'
+                  value={employment.startDate}
+                  onChange={(e) => {}}
+                />
+              </div>
+              <div>
+                <Label>End date: </Label>
+                <StyledDateInput
+                  type='date'
+                  placeholder='Enter your end date'
+                  value={employment.endDate}
+                  onChange={(e) => {}}
+                />
+              </div>
+            </DateWrapper>
+            <div>
+              <Label>City: </Label>
+              <Input
+                placeholder='Enter your City'
+                value={employment.city}
+                handler={(e) => {}}
+              />
+            </div>
+            <div style={{ gridColumn: '1 / 3' }}>
+              <Label>Description: </Label>
+              <Textarea
+                contentEditable
+                suppressContentEditableWarning={true}
+                placeholder='Enter your description'
+                onChange={(e) => {}}
+              >
+                {employment.description}
+              </Textarea>
             </div>
           </>
         )}

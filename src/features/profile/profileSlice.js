@@ -20,8 +20,10 @@ const initialState = {
       position: 'Junior Frontend Developer',
       employer: 'ECorp',
       city: 'New York',
-      startDate: '11.11.11',
-      endDate: '22.22.22',
+      startDate: '2017-06-25',
+      endDate: '2021-10-10',
+      description:
+        'I was responsible for implementing the front-end logic that defines the behavior of the visual elements of a web application',
     },
   ],
   image: null,

@@ -44,7 +44,6 @@ const Section = ({ heading, description, children, btnText, clickHandler }) => {
           type='button'
           onClick={() => {
             dispatch(clickHandler());
-            console.log('dsa');
           }}
         >
           {btnText}
