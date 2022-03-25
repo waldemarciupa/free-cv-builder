@@ -84,6 +84,11 @@ export const profileSlice = createSlice({
         endDate: '',
       });
     },
+    deleteEmployment: (state, action) => {
+      state.employments = state.employments.filter((skill) => {
+        return skill.id !== action.payload.id;
+      });
+    },
   },
 });
 
@@ -99,6 +104,7 @@ export const {
   updateSkill,
   deleteSkill,
   addEmployment,
+  deleteEmployment,
 } = profileSlice.actions;
 
 export default profileSlice.reducer;

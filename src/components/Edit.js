@@ -10,6 +10,7 @@ import {
   addSkill,
   addEmployment,
   deleteSkill,
+  deleteEmployment,
 } from '../features/profile/profileSlice';
 import Label from './Label';
 import Input from './Input';
@@ -118,7 +119,11 @@ const Edit = () => {
         >
           {profile.employments.length > 0 &&
             profile.employments.map((employment) => (
-              <Field key={employment.id} employment={employment} />
+              <Field
+                key={employment.id}
+                employment={employment}
+                deleteHandler={deleteEmployment}
+              />
             ))}
         </Section>
         <Section

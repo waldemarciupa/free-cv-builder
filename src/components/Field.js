@@ -153,7 +153,11 @@ const Field = ({ skill, employment, deleteHandler }) => {
         <FieldButton
           type='button'
           onClick={() => {
-            dispatch(deleteHandler({ id: skill.id }));
+            dispatch(
+              deleteHandler({
+                id: skill ? skill.id : employment && employment.id,
+              })
+            );
           }}
         >
           Delete
