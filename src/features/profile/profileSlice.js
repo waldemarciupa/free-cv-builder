@@ -19,9 +19,9 @@ const initialState = {
       id: '1647958919539',
       position: 'Junior Frontend Developer',
       employer: 'ECorp',
-      city: 'New York',
       startDate: '2017-06-25',
       endDate: '2021-10-10',
+      city: 'New York',
       description:
         'I was responsible for implementing the front-end logic that defines the behavior of the visual elements of a web application',
     },
@@ -84,11 +84,28 @@ export const profileSlice = createSlice({
         employer: '',
         startDate: '',
         endDate: '',
+        city: '',
+        description: '',
+      });
+    },
+    updateEmployment: (state, action) => {
+      state.employments = state.employments.map((employment) => {
+        return employment.id === action.payload.id
+          ? {
+              ...employment,
+              position: action.payload.position,
+              employer: action.payload.employer,
+              startDate: action.payload.startDate,
+              endDate: action.payload.endDate,
+              city: action.payload.city,
+              description: action.payload.description,
+            }
+          : employment;
       });
     },
     deleteEmployment: (state, action) => {
-      state.employments = state.employments.filter((skill) => {
-        return skill.id !== action.payload.id;
+      state.employments = state.employments.filter((employment) => {
+        return employment.id !== action.payload.id;
       });
     },
   },
@@ -106,6 +123,7 @@ export const {
   updateSkill,
   deleteSkill,
   addEmployment,
+  updateEmployment,
   deleteEmployment,
 } = profileSlice.actions;
 

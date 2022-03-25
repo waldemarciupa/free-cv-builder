@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import Label from './Label';
 import Input from './Input';
 import { useDispatch } from 'react-redux';
-import { updateSkill } from '../features/profile/profileSlice';
+import {
+  updateSkill,
+  updateEmployment,
+} from '../features/profile/profileSlice';
 
 const StyledField = styled.div`
   border: none;
@@ -134,6 +137,7 @@ const Field = ({ skill, employment, deleteHandler }) => {
                 ? employment.position
                 : '[Employment not specified yet]'}
             </div>
+            <div>{employment.employer ? employment.employer : ' '}</div>
           </div>
         )}
         <div>
@@ -193,7 +197,19 @@ const Field = ({ skill, employment, deleteHandler }) => {
               <Input
                 placeholder='Enter your position'
                 value={employment.position}
-                handler={(e) => {}}
+                handler={(e) => {
+                  dispatch(
+                    updateEmployment({
+                      id: employment.id,
+                      position: e.target.value,
+                      employer: employment.employer,
+                      startDate: employment.startDate,
+                      endDate: employment.endDate,
+                      city: employment.city,
+                      description: employment.description,
+                    })
+                  );
+                }}
               />
             </div>
             <div>
@@ -201,7 +217,19 @@ const Field = ({ skill, employment, deleteHandler }) => {
               <Input
                 placeholder='Enter your employer'
                 value={employment.employer}
-                handler={(e) => {}}
+                handler={(e) => {
+                  dispatch(
+                    updateEmployment({
+                      id: employment.id,
+                      position: employment.position,
+                      employer: e.target.value,
+                      startDate: employment.startDate,
+                      endDate: employment.endDate,
+                      city: employment.city,
+                      description: employment.description,
+                    })
+                  );
+                }}
               />
             </div>
             <DateWrapper>
@@ -211,7 +239,19 @@ const Field = ({ skill, employment, deleteHandler }) => {
                   type='date'
                   placeholder='Enter your start date'
                   value={employment.startDate}
-                  onChange={(e) => {}}
+                  onChange={(e) => {
+                    dispatch(
+                      updateEmployment({
+                        id: employment.id,
+                        position: employment.position,
+                        employer: employment.employer,
+                        startDate: e.target.value,
+                        endDate: employment.endDate,
+                        city: employment.city,
+                        description: employment.description,
+                      })
+                    );
+                  }}
                 />
               </div>
               <div>
@@ -220,7 +260,19 @@ const Field = ({ skill, employment, deleteHandler }) => {
                   type='date'
                   placeholder='Enter your end date'
                   value={employment.endDate}
-                  onChange={(e) => {}}
+                  onChange={(e) => {
+                    dispatch(
+                      updateEmployment({
+                        id: employment.id,
+                        position: employment.position,
+                        employer: employment.employer,
+                        startDate: employment.startDate,
+                        endDate: e.target.value,
+                        city: employment.city,
+                        description: employment.description,
+                      })
+                    );
+                  }}
                 />
               </div>
             </DateWrapper>
@@ -229,7 +281,19 @@ const Field = ({ skill, employment, deleteHandler }) => {
               <Input
                 placeholder='Enter your City'
                 value={employment.city}
-                handler={(e) => {}}
+                handler={(e) => {
+                  dispatch(
+                    updateEmployment({
+                      id: employment.id,
+                      position: employment.position,
+                      employer: employment.employer,
+                      startDate: employment.startDate,
+                      endDate: employment.endDate,
+                      city: e.target.value,
+                      description: employment.description,
+                    })
+                  );
+                }}
               />
             </div>
             <div style={{ gridColumn: '1 / 3' }}>
@@ -238,7 +302,19 @@ const Field = ({ skill, employment, deleteHandler }) => {
                 contentEditable
                 suppressContentEditableWarning={true}
                 placeholder='Enter your description'
-                onChange={(e) => {}}
+                onChange={(e) => {
+                  dispatch(
+                    updateEmployment({
+                      id: employment.id,
+                      position: employment.position,
+                      employer: employment.employer,
+                      startDate: employment.startDate,
+                      endDate: employment.endDate,
+                      city: employment.city,
+                      description: e.target.value,
+                    })
+                  );
+                }}
               >
                 {employment.description}
               </Textarea>
