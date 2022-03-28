@@ -105,6 +105,12 @@ const styles = StyleSheet.create({
     fontSize: '10px',
     marginBottom: '6px',
   },
+  paragraphBold: {
+    fontSize: '9px',
+  },
+  paddingBottom: {
+    paddingBottom: '10px',
+  },
 });
 
 export const Pdf = ({ profile }) => {
@@ -182,13 +188,37 @@ export const Pdf = ({ profile }) => {
             )}
           </View>
           <View style={styles.main}>
-            <Text
-              style={{
-                fontSize: '12px',
-              }}
-            >
-              Main
-            </Text>
+            {profile.employments.length > 0 && (
+              <View>
+                <Text style={styles.headline}>Employment history</Text>
+                {profile.employments.map(
+                  (employment) =>
+                    employment.position.length > 0 && (
+                      <View key={employment.id} style={styles.paddingBottom}>
+                        <Text style={styles.paragraph}>
+                          {employment.position}, {employment.employer}
+                        </Text>
+                        <Text style={styles.paragraphBold}>
+                          {employment.startDate.length > 0 &&
+                            new Intl.DateTimeFormat('en-US', {
+                              month: 'long',
+                            }).format(new Date(employment.startDate))}{' '}
+                          {employment.startDate.length > 0 &&
+                            new Date(employment.startDate).getFullYear()}
+                          {' - '}
+                          {employment.endDate.length > 0
+                            ? new Intl.DateTimeFormat('en-US', {
+                                month: 'long',
+                              }).format(new Date(employment.endDate)) + ' '
+                            : 'Present'}
+                          {employment.endDate.length > 0 &&
+                            new Date(employment.endDate).getFullYear()}
+                        </Text>
+                      </View>
+                    )
+                )}
+              </View>
+            )}
           </View>
         </View>
       </Page>
