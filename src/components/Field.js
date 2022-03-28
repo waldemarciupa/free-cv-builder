@@ -7,6 +7,7 @@ import {
   updateSkill,
   updateEmployment,
 } from '../features/profile/profileSlice';
+import Present from './Present';
 
 const StyledField = styled.div`
   border: none;
@@ -111,6 +112,10 @@ const Textarea = styled.div`
   margin-bottom: 8px;
   padding: 12px;
   box-shadow: inset 0 0 0 1px #878787;
+`;
+
+const PresentWrapper = styled.div`
+  position: relative;
 `;
 
 const Field = ({ skill, employment, deleteHandler }) => {
@@ -254,12 +259,13 @@ const Field = ({ skill, employment, deleteHandler }) => {
                   }}
                 />
               </div>
-              <div>
+              <PresentWrapper>
                 <Label>End date: </Label>
                 <StyledDateInput
                   type='date'
                   placeholder='Enter your end date'
-                  value={employment.endDate}
+                  disabled={employment.present}
+                  value={employment.present ? '' : employment.endDate}
                   onChange={(e) => {
                     dispatch(
                       updateEmployment({
@@ -274,7 +280,8 @@ const Field = ({ skill, employment, deleteHandler }) => {
                     );
                   }}
                 />
-              </div>
+                <Present employment={employment} />
+              </PresentWrapper>
             </DateWrapper>
             <div>
               <Label>City: </Label>

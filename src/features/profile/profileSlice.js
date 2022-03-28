@@ -21,6 +21,7 @@ const initialState = {
       employer: 'ECorp',
       startDate: '2017-06-25',
       endDate: '2021-10-10',
+      present: false,
       city: 'New York',
       description:
         'I was responsible for implementing the front-end logic that defines the behavior of the visual elements of a web application',
@@ -97,6 +98,7 @@ export const profileSlice = createSlice({
               employer: action.payload.employer,
               startDate: action.payload.startDate,
               endDate: action.payload.endDate,
+              present: action.payload.present,
               city: action.payload.city,
               description: action.payload.description,
             }
