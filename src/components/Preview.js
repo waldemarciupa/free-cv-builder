@@ -110,6 +110,11 @@ const styles = StyleSheet.create({
     color: '#878787',
     letterSpacing: '0.5px',
   },
+  description: {
+    fontSize: '9px',
+    color: '#878787',
+    marginTop: '6px',
+  },
   paddingBottom: {
     paddingBottom: '10px',
   },
@@ -218,6 +223,11 @@ export const Pdf = ({ profile }) => {
                           {employment.endDate.length > 0 &&
                             ' ' + new Date(employment.endDate).getFullYear()}
                         </Text>
+                        {employment.description && (
+                          <Text style={styles.description}>
+                            {employment.description}
+                          </Text>
+                        )}
                       </View>
                     )
                 )}
