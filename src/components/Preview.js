@@ -105,8 +105,10 @@ const styles = StyleSheet.create({
     fontSize: '10px',
     marginBottom: '6px',
   },
-  paragraphBold: {
+  bottomField: {
     fontSize: '9px',
+    color: '#878787',
+    letterSpacing: '0.5px',
   },
   paddingBottom: {
     paddingBottom: '10px',
@@ -196,23 +198,25 @@ export const Pdf = ({ profile }) => {
                     employment.position.length > 0 && (
                       <View key={employment.id} style={styles.paddingBottom}>
                         <Text style={styles.paragraph}>
-                          {employment.position}, {employment.employer}
+                          {employment.position}
+                          {employment.employer && `, ${employment.employer}`}
+                          {employment.city && `, ${employment.city}`}
                         </Text>
-                        <Text style={styles.paragraphBold}>
+                        <Text style={styles.bottomField}>
                           {employment.startDate.length > 0 &&
                             new Intl.DateTimeFormat('en-US', {
                               month: 'long',
                             }).format(new Date(employment.startDate))}{' '}
                           {employment.startDate.length > 0 &&
                             new Date(employment.startDate).getFullYear()}
-                          {' - '}
-                          {employment.endDate.length > 0
-                            ? new Intl.DateTimeFormat('en-US', {
-                                month: 'long',
-                              }).format(new Date(employment.endDate)) + ' '
-                            : 'Present'}
                           {employment.endDate.length > 0 &&
-                            new Date(employment.endDate).getFullYear()}
+                            ' - ' +
+                              new Intl.DateTimeFormat('en-US', {
+                                month: 'long',
+                              }).format(new Date(employment.endDate))}
+                          {employment.present && ' - Present'}
+                          {employment.endDate.length > 0 &&
+                            ' ' + new Date(employment.endDate).getFullYear()}
                         </Text>
                       </View>
                     )
