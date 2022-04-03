@@ -102,7 +102,9 @@ const StyledDateInput = styled.input`
 
 const Textarea = styled.div`
   width: 100%;
-  height: 120px;
+  min-height: 80px;
+  max-height: 140px;
+  overflow: auto;
   font-size: 14px;
   line-height: 18px;
   font-weight: 400;
@@ -210,6 +212,7 @@ const Field = ({ skill, employment, deleteHandler }) => {
                       employer: employment.employer,
                       startDate: employment.startDate,
                       endDate: employment.endDate,
+                      present: employment.present,
                       city: employment.city,
                       description: employment.description,
                     })
@@ -230,6 +233,7 @@ const Field = ({ skill, employment, deleteHandler }) => {
                       employer: e.target.value,
                       startDate: employment.startDate,
                       endDate: employment.endDate,
+                      present: employment.present,
                       city: employment.city,
                       description: employment.description,
                     })
@@ -252,6 +256,7 @@ const Field = ({ skill, employment, deleteHandler }) => {
                         employer: employment.employer,
                         startDate: e.target.value,
                         endDate: employment.endDate,
+                        present: employment.present,
                         city: employment.city,
                         description: employment.description,
                       })
@@ -274,6 +279,7 @@ const Field = ({ skill, employment, deleteHandler }) => {
                         employer: employment.employer,
                         startDate: employment.startDate,
                         endDate: e.target.value,
+                        present: employment.present,
                         city: employment.city,
                         description: employment.description,
                       })
@@ -296,6 +302,7 @@ const Field = ({ skill, employment, deleteHandler }) => {
                       employer: employment.employer,
                       startDate: employment.startDate,
                       endDate: employment.endDate,
+                      present: employment.present,
                       city: e.target.value,
                       description: employment.description,
                     })
@@ -309,7 +316,7 @@ const Field = ({ skill, employment, deleteHandler }) => {
                 contentEditable
                 suppressContentEditableWarning={true}
                 placeholder='Enter your description'
-                onChange={(e) => {
+                onInput={(e) => {
                   dispatch(
                     updateEmployment({
                       id: employment.id,
@@ -317,14 +324,13 @@ const Field = ({ skill, employment, deleteHandler }) => {
                       employer: employment.employer,
                       startDate: employment.startDate,
                       endDate: employment.endDate,
+                      present: employment.present,
                       city: employment.city,
-                      description: e.target.value,
+                      description: e.currentTarget.textContent,
                     })
                   );
                 }}
-              >
-                {employment.description}
-              </Textarea>
+              />
             </div>
           </>
         )}

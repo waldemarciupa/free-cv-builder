@@ -85,6 +85,7 @@ export const profileSlice = createSlice({
         employer: '',
         startDate: '',
         endDate: '',
+        present: false,
         city: '',
         description: '',
       });

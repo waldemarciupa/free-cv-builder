@@ -109,11 +109,12 @@ const styles = StyleSheet.create({
     fontSize: '9px',
     color: '#878787',
     letterSpacing: '0.5px',
+    marginBottom: '6px',
   },
   description: {
     fontSize: '9px',
+    lineHeight: '1.4',
     color: '#878787',
-    marginTop: '6px',
   },
   paddingBottom: {
     paddingBottom: '10px',
@@ -207,23 +208,25 @@ export const Pdf = ({ profile }) => {
                           {employment.employer && `, ${employment.employer}`}
                           {employment.city && `, ${employment.city}`}
                         </Text>
-                        <Text style={styles.bottomField}>
-                          {employment.startDate.length > 0 &&
-                            new Intl.DateTimeFormat('en-US', {
-                              month: 'long',
-                            }).format(new Date(employment.startDate))}{' '}
-                          {employment.startDate.length > 0 &&
-                            new Date(employment.startDate).getFullYear()}
-                          {employment.endDate.length > 0 &&
-                            ' - ' +
+                        {employment.startDate.length > 0 && (
+                          <Text style={styles.bottomField}>
+                            {employment.startDate.length > 0 &&
                               new Intl.DateTimeFormat('en-US', {
                                 month: 'long',
-                              }).format(new Date(employment.endDate))}
-                          {employment.present && ' - Present'}
-                          {employment.endDate.length > 0 &&
-                            ' ' + new Date(employment.endDate).getFullYear()}
-                        </Text>
-                        {employment.description && (
+                              }).format(new Date(employment.startDate))}{' '}
+                            {employment.startDate.length > 0 &&
+                              new Date(employment.startDate).getFullYear()}
+                            {employment.endDate.length > 0 &&
+                              ' - ' +
+                                new Intl.DateTimeFormat('en-US', {
+                                  month: 'long',
+                                }).format(new Date(employment.endDate))}
+                            {employment.present && ' - Present'}
+                            {employment.endDate.length > 0 &&
+                              ' ' + new Date(employment.endDate).getFullYear()}
+                          </Text>
+                        )}
+                        {employment.description.length > 0 && (
                           <Text style={styles.description}>
                             {employment.description}
                           </Text>
