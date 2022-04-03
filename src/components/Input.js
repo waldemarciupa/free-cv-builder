@@ -14,9 +14,14 @@ const StyledInput = styled.input`
   box-shadow: inset 0 0 0 1px #878787;
 `;
 
-const Input = ({ value, placeholder, handler }) => {
+const Input = ({ value, name, placeholder, handler }) => {
   return (
-    <StyledInput value={value} onChange={handler} placeholder={placeholder} />
+    <StyledInput
+      value={value}
+      name={name}
+      onChange={handler}
+      placeholder={placeholder}
+    />
   );
 };
 

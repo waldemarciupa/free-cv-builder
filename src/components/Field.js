@@ -203,18 +203,13 @@ const Field = ({ skill, employment, deleteHandler }) => {
               <Label>Position: </Label>
               <Input
                 placeholder='Enter your position'
+                name='position'
                 value={employment.position}
                 handler={(e) => {
                   dispatch(
                     updateEmployment({
                       id: employment.id,
-                      position: e.target.value,
-                      employer: employment.employer,
-                      startDate: employment.startDate,
-                      endDate: employment.endDate,
-                      present: employment.present,
-                      city: employment.city,
-                      description: employment.description,
+                      [e.target.name]: e.target.value,
                     })
                   );
                 }}
@@ -224,18 +219,13 @@ const Field = ({ skill, employment, deleteHandler }) => {
               <Label>Employer: </Label>
               <Input
                 placeholder='Enter your employer'
+                name='employer'
                 value={employment.employer}
                 handler={(e) => {
                   dispatch(
                     updateEmployment({
                       id: employment.id,
-                      position: employment.position,
-                      employer: e.target.value,
-                      startDate: employment.startDate,
-                      endDate: employment.endDate,
-                      present: employment.present,
-                      city: employment.city,
-                      description: employment.description,
+                      [e.target.name]: e.target.value,
                     })
                   );
                 }}
@@ -247,18 +237,13 @@ const Field = ({ skill, employment, deleteHandler }) => {
                 <StyledDateInput
                   type='date'
                   placeholder='Enter your start date'
+                  name='startDate'
                   value={employment.startDate}
                   onChange={(e) => {
                     dispatch(
                       updateEmployment({
                         id: employment.id,
-                        position: employment.position,
-                        employer: employment.employer,
-                        startDate: e.target.value,
-                        endDate: employment.endDate,
-                        present: employment.present,
-                        city: employment.city,
-                        description: employment.description,
+                        [e.target.name]: e.target.value,
                       })
                     );
                   }}
@@ -269,19 +254,14 @@ const Field = ({ skill, employment, deleteHandler }) => {
                 <StyledDateInput
                   type='date'
                   placeholder='Enter your end date'
+                  name='endDate'
                   disabled={employment.present}
                   value={employment.present ? '' : employment.endDate}
                   onChange={(e) => {
                     dispatch(
                       updateEmployment({
                         id: employment.id,
-                        position: employment.position,
-                        employer: employment.employer,
-                        startDate: employment.startDate,
-                        endDate: e.target.value,
-                        present: employment.present,
-                        city: employment.city,
-                        description: employment.description,
+                        [e.target.name]: e.target.value,
                       })
                     );
                   }}
@@ -293,18 +273,13 @@ const Field = ({ skill, employment, deleteHandler }) => {
               <Label>City: </Label>
               <Input
                 placeholder='Enter your City'
+                name='city'
                 value={employment.city}
                 handler={(e) => {
                   dispatch(
                     updateEmployment({
                       id: employment.id,
-                      position: employment.position,
-                      employer: employment.employer,
-                      startDate: employment.startDate,
-                      endDate: employment.endDate,
-                      present: employment.present,
-                      city: e.target.value,
-                      description: employment.description,
+                      [e.target.name]: e.target.value,
                     })
                   );
                 }}

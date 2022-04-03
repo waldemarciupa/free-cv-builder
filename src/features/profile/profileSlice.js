@@ -95,13 +95,7 @@ export const profileSlice = createSlice({
         return employment.id === action.payload.id
           ? {
               ...employment,
-              position: action.payload.position,
-              employer: action.payload.employer,
-              startDate: action.payload.startDate,
-              endDate: action.payload.endDate,
-              present: action.payload.present,
-              city: action.payload.city,
-              description: action.payload.description,
+              ...action.payload,
             }
           : employment;
       });
