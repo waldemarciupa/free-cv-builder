@@ -7,9 +7,7 @@ import {
   setEmail,
   setPhone,
   setLocation,
-  addSkill,
   addEmployment,
-  deleteSkill,
   deleteEmployment,
 } from '../features/profile/profileSlice';
 import Label from './Label';
@@ -17,6 +15,7 @@ import Input from './Input';
 import FileInput from './FileInput';
 import Field from './Field';
 import Section from './Section';
+import Skills from './Skills';
 
 const Container = styled.div`
   width: 50%;
@@ -126,18 +125,7 @@ const Edit = () => {
               />
             ))}
         </Section>
-        <Section
-          heading={'Skills'}
-          description={`You can add the most important skills you know. You don't need to
-          specify your skill level.`}
-          clickHandler={addSkill}
-          btnText={'Add skill'}
-        >
-          {profile.skills.length > 0 &&
-            profile.skills.map((skill) => (
-              <Field key={skill.id} skill={skill} deleteHandler={deleteSkill} />
-            ))}
-        </Section>
+        <Skills />
       </form>
     </Container>
   );
