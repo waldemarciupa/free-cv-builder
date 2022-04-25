@@ -9,13 +9,13 @@ import {
   setLocation,
   addEmployment,
   deleteEmployment,
-} from '../features/profile/profileSlice';
-import Label from './Label';
-import Input from './Input';
-import FileInput from './FileInput';
-import Field from './Field';
-import Section from './Section';
-import Skills from './Skills';
+} from '../../../features/profile/profileSlice';
+import Label from '../../Label/Label';
+import Input from '../../Input/Input';
+import FileInput from '../../FileInput/FileInput';
+import Field from '../../Field/Field';
+import Section from '../../Section/Section';
+import Skills from './Skills/Skills';
 
 const Container = styled.div`
   width: 50%;

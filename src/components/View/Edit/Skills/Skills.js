@@ -1,6 +1,9 @@
-import Section from './Section';
-import Field from './Field';
-import { addSkill, deleteSkill } from '../features/profile/profileSlice';
+import Section from '../../../Section/Section';
+import Field from '../../../Field/Field';
+import {
+  addSkill,
+  deleteSkill,
+} from '../../../../features/profile/profileSlice';
 import { useSelector } from 'react-redux';
 
 const Skills = () => {

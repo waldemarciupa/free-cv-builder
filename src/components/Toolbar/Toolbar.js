@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { PDFDownloadLink, StyleSheet } from '@react-pdf/renderer';
-import { Pdf } from './Preview';
+import { Pdf } from '../View/Preview/Preview';
 import { useSelector } from 'react-redux';
 
 const Container = styled.div`

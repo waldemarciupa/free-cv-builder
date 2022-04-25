@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateEmployment } from '../features/profile/profileSlice';
+import { updateEmployment } from '../../features/profile/profileSlice';
 
 const StyledPresent = styled.div`
   position: absolute;

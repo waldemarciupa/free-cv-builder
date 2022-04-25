@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Label from './Label';
+import Label from '../Label/Label';
 import { useDispatch } from 'react-redux';
-import { setImage } from '../features/profile/profileSlice';
+import { setImage } from '../../features/profile/profileSlice';
 
 const StyledInput = styled.input`
   width: 0.1px;

@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import Label from './Label';
-import Input from './Input';
+import Label from '../Label/Label';
+import Input from '../Input/Input';
 import { useDispatch } from 'react-redux';
 import {
   updateSkill,
   updateEmployment,
-} from '../features/profile/profileSlice';
-import Present from './Present';
+} from '../../features/profile/profileSlice';
+import Present from '../Present/Present';
 
 const StyledField = styled.div`
   border: none;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Toolbar from './components/Toolbar';
-import Edit from './components/Edit';
-import Preview from './components/Preview';
+import Toolbar from './components/Toolbar/Toolbar';
+import Edit from './components/View/Edit/Edit';
+import Preview from './components/View/Preview/Preview';
 import GlobalStyle from './globalStyles';
 
 const Container = styled.div`
