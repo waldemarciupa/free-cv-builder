@@ -16,6 +16,7 @@ import FileInput from '../../FileInput/FileInput';
 import Field from '../../Field/Field';
 import Section from '../../Section/Section';
 import Skills from './Skills/Skills';
+import Languages from './Languges/Languages';
 
 const Container = styled.div`
   width: 50%;
@@ -126,6 +127,7 @@ const Edit = () => {
             ))}
         </Section>
         <Skills />
+        <Languages />
       </form>
     </Container>
   );
