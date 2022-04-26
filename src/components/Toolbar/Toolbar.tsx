@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { PDFDownloadLink, StyleSheet } from '@react-pdf/renderer';
 import { Pdf } from '../View/Preview/Preview';
 import { useSelector } from 'react-redux';
+import { RootState } from '../../app/store';
 
 const Container = styled.div`
   width: 100%;
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
 });
 
 const Toolbar = () => {
-  const profile = useSelector((state) => state.profile);
+  const profile = useSelector((state: RootState) => state.profile);
 
   return (
     <Container>
