@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 
@@ -31,7 +32,21 @@ const Button = styled.button`
   }
 `;
 
-const Section = ({ heading, description, children, btnText, clickHandler }) => {
+interface SectionProps {
+  heading?: string;
+  description?: string;
+  children: ReactNode;
+  btnText?: string;
+  clickHandler?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+}
+
+const Section = ({
+  heading,
+  description,
+  children,
+  btnText,
+  clickHandler,
+}: SectionProps) => {
   const dispatch = useDispatch();
 
   return (
@@ -43,7 +58,7 @@ const Section = ({ heading, description, children, btnText, clickHandler }) => {
         <Button
           type='button'
           onClick={() => {
-            dispatch(clickHandler());
+            dispatch(clickHandler);
           }}
         >
           {btnText}

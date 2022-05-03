@@ -114,7 +114,7 @@ const Edit = () => {
           heading={'Employment history'}
           description={`Here you can show your employment history, don't hesitate to include
             the description, but it's not required.`}
-          clickHandler={addEmployment}
+          clickHandler={addEmployment()}
           btnText={'Add employment'}
         >
           {profile.employments.length > 0 &&

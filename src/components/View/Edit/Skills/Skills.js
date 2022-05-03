@@ -14,7 +14,7 @@ const Skills = () => {
       heading={'Skills'}
       description={`You can add the most important skills you know. You don't need to
           specify your skill level.`}
-      clickHandler={addSkill}
+      clickHandler={addSkill()}
       btnText={'Add skill'}
     >
       {profile.skills.length > 0 &&
