@@ -31,7 +31,9 @@ const Preview = () => {
 };
 
 const styles = StyleSheet.create({
-  page: { padding: 20 },
+  page: {
+    padding: 20,
+  },
   head: {
     display: 'flex',
     flexDirection: 'row',
@@ -245,6 +247,7 @@ export const Pdf = ({ profile }) => {
 
 const Container = styled.div`
   width: 50%;
+  overflow: hidden;
 `;
 
 export default Preview;
