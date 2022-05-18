@@ -3,10 +3,10 @@ import { PDFDownloadLink } from '@react-pdf/renderer';
 
 const Container = styled.div`
   width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
   background: #303031;
   padding: 12px 48px;
-  display: grid;
-  place-content: center;
   display: flex;
   justify-content: space-between;
   align-items: center;

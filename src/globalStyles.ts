@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 14px;
+    background: #303031;
   }
 
   ::-webkit-scrollbar {
