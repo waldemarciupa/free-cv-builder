@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledInput = styled.input`
+const Input = styled.input`
   display: block;
   width: 100%;
   font-size: 14px;
@@ -14,15 +14,4 @@ const StyledInput = styled.input`
   box-shadow: inset 0 0 0 1px #878787;
 `;
 
-const Input = ({ value, name, placeholder, handler }) => {
-  return (
-    <StyledInput
-      value={value}
-      name={name}
-      onChange={handler}
-      placeholder={placeholder}
-    />
-  );
-};
-
-export default Input;
+export default { Input };
