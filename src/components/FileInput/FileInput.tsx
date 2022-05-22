@@ -6,10 +6,10 @@ import Styled from './FileInput.styled';
 
 const FileInput = () => {
   const dispatch = useDispatch();
+  const placeholder =
+    'https://placehold.jp/f4f4f5/666666/118x118.png?text=photo.jpg';
 
-  const [url, setUrl] = useState(
-    'https://placehold.jp/f4f4f5/666666/118x118.png?text=photo.jpg'
-  );
+  const [url, setUrl] = useState(placeholder);
 
   const handleChangeImage = (event: React.ChangeEvent) => {
     const target = event.target as HTMLInputElement;
@@ -22,7 +22,7 @@ const FileInput = () => {
         setUrl(url);
         dispatch(setImage(url));
       } else {
-        setUrl('https://placehold.jp/f4f4f5/666666/118x118.png?text=photo.jpg');
+        setUrl(placeholder);
       }
     }
   };
