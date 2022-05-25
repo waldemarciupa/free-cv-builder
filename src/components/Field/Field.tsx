@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import {
   updateSkill,
   updateEmployment,
+  updateLanguage,
 } from '../../features/profile/profileSlice';
 import Label from '../Label/Label';
 import Input from '../Input/Input';
@@ -36,7 +37,7 @@ const Field = ({ skill, language, employment, deleteHandler }: FieldProps) => {
         {language && (
           <div>
             <div>
-              {language.title ? language.title : '[Language not specified yet]'}
+              {language.name ? language.name : '[Language not specified yet]'}
             </div>
             <div>{language.level ? language.level : ' '}</div>
           </div>
@@ -95,6 +96,44 @@ const Field = ({ skill, language, employment, deleteHandler }: FieldProps) => {
                     updateSkill({
                       id: skill.id,
                       title: skill.title,
+                      level: e.target.value,
+                    })
+                  );
+                }}
+              />
+            </div>
+          </>
+        )}
+        {language && (
+          <>
+            <div>
+              <Label htmlFor='Language'>Language: </Label>
+              <Input
+                placeholder='Enter your language'
+                value={language.name}
+                name='Language'
+                handler={(e) => {
+                  dispatch(
+                    updateLanguage({
+                      id: language.id,
+                      name: e.target.value,
+                      level: language.level,
+                    })
+                  );
+                }}
+              />
+            </div>
+            <div>
+              <Label htmlFor='Level'>Level: </Label>
+              <Input
+                placeholder='Enter your level'
+                value={language.level}
+                name='Level'
+                handler={(e) => {
+                  dispatch(
+                    updateLanguage({
+                      id: language.id,
+                      name: language.name,
                       level: e.target.value,
                     })
                   );
