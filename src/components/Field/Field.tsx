@@ -1,126 +1,22 @@
 import { useState } from 'react';
-import styled from 'styled-components';
-import Label from '../Label/Label';
-import Input from '../Input/Input';
 import { useDispatch } from 'react-redux';
 import {
   updateSkill,
   updateEmployment,
 } from '../../features/profile/profileSlice';
+import Label from '../Label/Label';
+import Input from '../Input/Input';
 import Present from '../Present/Present';
+import Styled from './Field.styled';
 
-const StyledField = styled.div`
-  border: none;
-  border-radius: 4px;
-  margin: 0;
-  margin-bottom: 20px;
-  box-shadow: inset 0 0 0 1px #878787;
-`;
+interface FieldProps {
+  skill: any;
+  language: any;
+  employment: any;
+  deleteHandler: any;
+}
 
-const FieldHead = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px 15px 20px;
-  margin-bottom: 8px;
-  cursor: pointer;
-  min-height: 68px;
-
-  & > div > div:first-child {
-    font-weight: 700;
-  }
-`;
-
-const Dropdown = styled.div`
-  width: 24px;
-  height: 24px;
-  display: grid;
-  place-content: center;
-  transform: ${(props) => (props.isRotate ? 'rotate(0deg)' : 'rotate(180deg)')};
-`;
-
-const FieldMain = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 20px;
-  padding: 0 20px;
-  margin-bottom: 8px;
-  ${(props) => props.isRotate && 'display: none;'}
-
-  & > div {
-    min-width: 100%;
-  }
-`;
-
-const FieldButtons = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-  padding: 0 20px 15px 20px;
-  ${(props) => props.isRotate && 'display: none;'}
-`;
-
-const FieldButton = styled.button`
-  border: none;
-  border-radius: 4px;
-  font-size: 12px;
-  padding: 6px 14px;
-  display: grid;
-  place-content: center;
-  background-color: #f4f4f5;
-  cursor: pointer;
-  transition: background-color 0.1s linear;
-
-  &:hover {
-    background-color: rgba(57, 76, 96, 0.15);
-  }
-`;
-
-const DateWrapper = styled.div`
-  display: grid;
-  grid-template-columns: minmax(20px, auto) minmax(20px, auto);
-  gap: 10px;
-`;
-
-const StyledDateInput = styled.input`
-  width: 100%;
-  height: 40px;
-  font-size: 14px;
-  line-height: 14px;
-  font-weight: 400;
-  border: none;
-  border-radius: 4px;
-  margin: 0;
-  margin-bottom: 8px;
-  padding: 12px;
-  box-shadow: inset 0 0 0 1px #878787;
-
-  @media (max-width: 1366px) {
-    padding: 12px 2px 12px 8px;
-  }
-`;
-
-const Textarea = styled.div`
-  width: 100%;
-  min-height: 80px;
-  max-height: 140px;
-  overflow: auto;
-  font-size: 14px;
-  line-height: 18px;
-  font-weight: 400;
-  border: none;
-  border-radius: 4px;
-  margin: 0;
-  margin-bottom: 8px;
-  padding: 12px;
-  box-shadow: inset 0 0 0 1px #878787;
-`;
-
-const PresentWrapper = styled.div`
-  position: relative;
-`;
-
-const Field = ({ skill, employment, deleteHandler }) => {
+const Field = ({ skill, language, employment, deleteHandler }: FieldProps) => {
   const [isRotate, setIsRotate] = useState(false);
   const dispatch = useDispatch();
 
@@ -129,12 +25,20 @@ const Field = ({ skill, employment, deleteHandler }) => {
   };
 
   return (
-    <StyledField>
-      <FieldHead isRotate={isRotate} onClick={handleRotate}>
+    <Styled.Field>
+      <Styled.FieldHead onClick={handleRotate}>
         {skill && (
           <div>
             <div>{skill.title ? skill.title : '[Skill not specified yet]'}</div>
             <div>{skill.level ? skill.level : ' '}</div>
+          </div>
+        )}
+        {language && (
+          <div>
+            <div>
+              {language.title ? language.title : '[Language not specified yet]'}
+            </div>
+            <div>{language.level ? language.level : ' '}</div>
           </div>
         )}
         {employment && (
@@ -148,7 +52,7 @@ const Field = ({ skill, employment, deleteHandler }) => {
           </div>
         )}
         <div>
-          <Dropdown isRotate={isRotate} type='button'>
+          <Styled.Dropdown isRotate={isRotate} role='button'>
             <svg
               width='20'
               height='20'
@@ -157,17 +61,18 @@ const Field = ({ skill, employment, deleteHandler }) => {
             >
               <path d='M5.293 7.293a1 1 0 0 1 1.414 0L10 10.586l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414z'></path>
             </svg>
-          </Dropdown>
+          </Styled.Dropdown>
         </div>
-      </FieldHead>
-      <FieldMain isRotate={isRotate}>
+      </Styled.FieldHead>
+      <Styled.FieldMain isRotate={isRotate}>
         {skill && (
           <>
             <div>
-              <Label>Skill: </Label>
+              <Label htmlFor='Skill'>Skill: </Label>
               <Input
                 placeholder='Enter your skill'
                 value={skill.title}
+                name='Skill'
                 handler={(e) => {
                   dispatch(
                     updateSkill({
@@ -180,10 +85,11 @@ const Field = ({ skill, employment, deleteHandler }) => {
               />
             </div>
             <div>
-              <Label>Level: </Label>
+              <Label htmlFor='Level'>Level: </Label>
               <Input
                 placeholder='Enter your level'
                 value={skill.level}
+                name='Level'
                 handler={(e) => {
                   dispatch(
                     updateSkill({
@@ -200,10 +106,10 @@ const Field = ({ skill, employment, deleteHandler }) => {
         {employment && (
           <>
             <div>
-              <Label>Position: </Label>
+              <Label htmlFor='Position'>Position: </Label>
               <Input
                 placeholder='Enter your position'
-                name='position'
+                name='Position'
                 value={employment.position}
                 handler={(e) => {
                   dispatch(
@@ -216,10 +122,10 @@ const Field = ({ skill, employment, deleteHandler }) => {
               />
             </div>
             <div>
-              <Label>Employer: </Label>
+              <Label htmlFor='Employer'>Employer: </Label>
               <Input
                 placeholder='Enter your employer'
-                name='employer'
+                name='Employer'
                 value={employment.employer}
                 handler={(e) => {
                   dispatch(
@@ -231,10 +137,10 @@ const Field = ({ skill, employment, deleteHandler }) => {
                 }}
               />
             </div>
-            <DateWrapper>
+            <Styled.DateWrapper>
               <div>
-                <Label>Start date: </Label>
-                <StyledDateInput
+                <Label htmlFor='startDate'>Start date: </Label>
+                <Styled.DateInput
                   type='date'
                   placeholder='Enter your start date'
                   name='startDate'
@@ -249,9 +155,9 @@ const Field = ({ skill, employment, deleteHandler }) => {
                   }}
                 />
               </div>
-              <PresentWrapper>
-                <Label>End date: </Label>
-                <StyledDateInput
+              <Styled.PresentWrapper>
+                <Label htmlFor='endDate'>End date: </Label>
+                <Styled.DateInput
                   type='date'
                   placeholder='Enter your end date'
                   name='endDate'
@@ -267,13 +173,13 @@ const Field = ({ skill, employment, deleteHandler }) => {
                   }}
                 />
                 <Present employment={employment} />
-              </PresentWrapper>
-            </DateWrapper>
+              </Styled.PresentWrapper>
+            </Styled.DateWrapper>
             <div>
-              <Label>City: </Label>
+              <Label htmlFor='City'>City: </Label>
               <Input
                 placeholder='Enter your City'
-                name='city'
+                name='City'
                 value={employment.city}
                 handler={(e) => {
                   dispatch(
@@ -286,11 +192,12 @@ const Field = ({ skill, employment, deleteHandler }) => {
               />
             </div>
             <div style={{ gridColumn: '1 / 3' }}>
-              <Label>Description: </Label>
-              <Textarea
+              <Label htmlFor='Description'>Description: </Label>
+              <Styled.Textarea
                 contentEditable
                 suppressContentEditableWarning={true}
                 placeholder='Enter your description'
+                role='textarea'
                 onInput={(e) => {
                   dispatch(
                     updateEmployment({
@@ -306,12 +213,13 @@ const Field = ({ skill, employment, deleteHandler }) => {
                   );
                 }}
               />
+              <Styled.Input name='Description' aria-label='hidden' />
             </div>
           </>
         )}
-      </FieldMain>
-      <FieldButtons isRotate={isRotate}>
-        <FieldButton
+      </Styled.FieldMain>
+      <Styled.FieldButtons isRotate={isRotate}>
+        <Styled.FieldButton
           type='button'
           onClick={() => {
             dispatch(
@@ -322,12 +230,12 @@ const Field = ({ skill, employment, deleteHandler }) => {
           }}
         >
           Delete
-        </FieldButton>
-        <FieldButton type='button' onClick={handleRotate}>
+        </Styled.FieldButton>
+        <Styled.FieldButton type='button' onClick={handleRotate}>
           Save
-        </FieldButton>
-      </FieldButtons>
-    </StyledField>
+        </Styled.FieldButton>
+      </Styled.FieldButtons>
+    </Styled.Field>
   );
 };
 
