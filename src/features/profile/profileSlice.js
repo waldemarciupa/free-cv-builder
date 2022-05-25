@@ -152,6 +152,9 @@ export const {
   addEmployment,
   updateEmployment,
   deleteEmployment,
+  addLanguage,
+  updateLanguage,
+  deleteLanguage,
 } = profileSlice.actions;
 
 export default profileSlice.reducer;
