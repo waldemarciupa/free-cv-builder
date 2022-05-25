@@ -14,6 +14,13 @@ const initialState = {
       level: 'Beginner',
     },
   ],
+  languages: [
+    {
+      id: '1647958919531',
+      name: 'Polish',
+      level: 'Native',
+    },
+  ],
   employments: [
     {
       id: '1647958919539',
@@ -103,6 +110,29 @@ export const profileSlice = createSlice({
     deleteEmployment: (state, action) => {
       state.employments = state.employments.filter((employment) => {
         return employment.id !== action.payload.id;
+      });
+    },
+    addLanguage: (state) => {
+      state.languages.push({
+        id: Date.now(),
+        name: '',
+        level: '',
+      });
+    },
+    updateLanguage: (state, action) => {
+      state.languages = state.languages.map((language) => {
+        return language.id === action.payload.id
+          ? {
+              ...language,
+              name: action.payload.name,
+              level: action.payload.level,
+            }
+          : language;
+      });
+    },
+    deleteLanguage: (state, action) => {
+      state.languages = state.languages.filter((language) => {
+        return language.id !== action.payload.id;
       });
     },
   },
