@@ -32,7 +32,7 @@ const Preview = () => {
 
 const styles = StyleSheet.create({
   page: {
-    padding: 20,
+    padding: '30px 40px',
   },
   head: {
     display: 'flex',
@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
   name: {
     fontSize: '28px',
     textTransform: 'uppercase',
+    marginBottom: 2,
   },
   position: {
     fontSize: '14px',
@@ -93,6 +94,9 @@ const styles = StyleSheet.create({
     paddingRight: '16px',
     minHeight: '675px',
     width: '25%',
+  },
+  asideBox: {
+    marginBottom: 10,
   },
   main: {
     paddingLeft: '20px',
@@ -184,13 +188,27 @@ export const Pdf = ({ profile }) => {
         <View style={styles.content}>
           <View style={styles.aside}>
             {profile.skills.length > 0 && (
-              <View>
+              <View style={styles.asideBox}>
                 <Text style={styles.headline}>Skills</Text>
                 {profile.skills.map(
                   (skill) =>
                     skill.title.length > 0 && (
                       <Text key={skill.id} style={styles.paragraph}>
                         {skill.title} {skill.level && `- ${skill.level}`}
+                      </Text>
+                    )
+                )}
+              </View>
+            )}
+            {profile.languages.length > 0 && (
+              <View style={styles.asideBox}>
+                <Text style={styles.headline}>Languages</Text>
+                {profile.languages.map(
+                  (language) =>
+                    language.name.length > 0 && (
+                      <Text key={language.id} style={styles.paragraph}>
+                        {language.name}{' '}
+                        {language.level && `- ${language.level}`}
                       </Text>
                     )
                 )}
