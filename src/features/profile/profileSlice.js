@@ -34,6 +34,18 @@ const initialState = {
         'I was responsible for implementing the front-end logic that defines the behavior of the visual elements of a web application',
     },
   ],
+  edcations: [
+    {
+      id: '1247958919539',
+      school: 'Harvard University',
+      degree: 'Bachelor',
+      startDate: '2009-10-01',
+      endDate: '2012-06-30',
+      present: false,
+      city: 'New York',
+      description: 'this is my education description',
+    },
+  ],
   image: null,
 };
 
@@ -112,6 +124,33 @@ export const profileSlice = createSlice({
         return employment.id !== action.payload.id;
       });
     },
+    addEducation: (state) => {
+      state.employments.push({
+        id: Date.now(),
+        school: '',
+        degree: '',
+        startDate: '',
+        endDate: '',
+        present: false,
+        city: '',
+        description: '',
+      });
+    },
+    updateEducation: (state, action) => {
+      state.educations = state.educations.map((education) => {
+        return education.id === action.payload.id
+          ? {
+              ...education,
+              ...action.payload,
+            }
+          : education;
+      });
+    },
+    deleteEducation: (state, action) => {
+      state.educations = state.educations.filter((education) => {
+        return education.id !== action.payload.id;
+      });
+    },
     addLanguage: (state) => {
       state.languages.push({
         id: Date.now(),
@@ -152,6 +191,9 @@ export const {
   addEmployment,
   updateEmployment,
   deleteEmployment,
+  addEducation,
+  updateEducation,
+  deleteEducation,
   addLanguage,
   updateLanguage,
   deleteLanguage,
