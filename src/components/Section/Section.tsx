@@ -7,7 +7,7 @@ interface SectionProps {
   description?: string;
   children: ReactNode;
   btnText?: string;
-  clickHandler?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  clickHandler?: any;
 }
 
 const Section = ({

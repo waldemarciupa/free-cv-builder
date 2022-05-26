@@ -11,9 +11,9 @@ import Present from '../Present/Present';
 import Styled from './Field.styled';
 
 interface FieldProps {
-  skill: any;
-  language: any;
-  employment: any;
+  skill?: any;
+  language?: any;
+  employment?: any;
   deleteHandler: any;
 }
 

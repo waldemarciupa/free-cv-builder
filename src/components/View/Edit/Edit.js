@@ -7,16 +7,14 @@ import {
   setEmail,
   setPhone,
   setLocation,
-  addEmployment,
-  deleteEmployment,
 } from '../../../features/profile/profileSlice';
 import Label from '../../Label/Label';
 import Input from '../../Input/Input';
 import FileInput from '../../FileInput/FileInput';
-import Field from '../../Field/Field';
 import Section from '../../Section/Section';
 import Skills from './Skills/Skills';
 import Languages from './Languges/Languages';
+import Employment from './Employment/Employment';
 
 const Container = styled.div`
   width: 50%;
@@ -110,22 +108,7 @@ const Edit = () => {
             />
           </InputWrapper>
         </Section>
-        <Section
-          heading={'Employment history'}
-          description={`Here you can show your employment history, don't hesitate to include
-            the description, but it's not required.`}
-          clickHandler={addEmployment()}
-          btnText={'Add employment'}
-        >
-          {profile.employments.length > 0 &&
-            profile.employments.map((employment) => (
-              <Field
-                key={employment.id}
-                employment={employment}
-                deleteHandler={deleteEmployment}
-              />
-            ))}
-        </Section>
+        <Employment />
         <Skills />
         <Languages />
       </form>
