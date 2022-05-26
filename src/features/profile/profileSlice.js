@@ -34,7 +34,7 @@ const initialState = {
         'I was responsible for implementing the front-end logic that defines the behavior of the visual elements of a web application',
     },
   ],
-  edcations: [
+  educations: [
     {
       id: '1247958919539',
       school: 'Harvard University',
@@ -42,8 +42,8 @@ const initialState = {
       startDate: '2009-10-01',
       endDate: '2012-06-30',
       present: false,
-      city: 'New York',
-      description: 'this is my education description',
+      city: 'Cambridge',
+      description: 'This is my education description',
     },
   ],
   image: null,

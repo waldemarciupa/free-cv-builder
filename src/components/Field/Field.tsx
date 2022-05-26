@@ -4,6 +4,7 @@ import {
   updateSkill,
   updateEmployment,
   updateLanguage,
+  updateEducation,
 } from '../../features/profile/profileSlice';
 import Label from '../Label/Label';
 import Input from '../Input/Input';
@@ -14,10 +15,17 @@ interface FieldProps {
   skill?: any;
   language?: any;
   employment?: any;
+  education?: any;
   deleteHandler: any;
 }
 
-const Field = ({ skill, language, employment, deleteHandler }: FieldProps) => {
+const Field = ({
+  skill,
+  language,
+  employment,
+  education,
+  deleteHandler,
+}: FieldProps) => {
   const [isRotate, setIsRotate] = useState(false);
   const dispatch = useDispatch();
 
@@ -50,6 +58,16 @@ const Field = ({ skill, language, employment, deleteHandler }: FieldProps) => {
                 : '[Employment not specified yet]'}
             </div>
             <div>{employment.employer ? employment.employer : ' '}</div>
+          </div>
+        )}
+        {education && (
+          <div>
+            <div>
+              {education.school
+                ? education.school
+                : '[Education not specified yet]'}
+            </div>
+            <div>{education.degree ? education.degree : ' '}</div>
           </div>
         )}
         <div>
@@ -247,6 +265,120 @@ const Field = ({ skill, language, employment, deleteHandler }: FieldProps) => {
                       endDate: employment.endDate,
                       present: employment.present,
                       city: employment.city,
+                      description: e.currentTarget.textContent,
+                    })
+                  );
+                }}
+              />
+              <Styled.Input name='Description' aria-label='hidden' />
+            </div>
+          </>
+        )}
+        {education && (
+          <>
+            <div>
+              <Label htmlFor='School'>School: </Label>
+              <Input
+                placeholder='Enter your school'
+                name='School'
+                value={education.school}
+                handler={(e) => {
+                  dispatch(
+                    updateEducation({
+                      id: education.id,
+                      [e.target.name]: e.target.value,
+                    })
+                  );
+                }}
+              />
+            </div>
+            <div>
+              <Label htmlFor='Degree'>Degree: </Label>
+              <Input
+                placeholder='Enter your degree'
+                name='Degree'
+                value={education.degree}
+                handler={(e) => {
+                  dispatch(
+                    updateEducation({
+                      id: education.id,
+                      [e.target.name]: e.target.value,
+                    })
+                  );
+                }}
+              />
+            </div>
+            <Styled.DateWrapper>
+              <div>
+                <Label htmlFor='startDate'>Start date: </Label>
+                <Styled.DateInput
+                  type='date'
+                  placeholder='Enter your start date'
+                  name='startDate'
+                  value={education.startDate}
+                  onChange={(e) => {
+                    dispatch(
+                      updateEducation({
+                        id: education.id,
+                        [e.target.name]: e.target.value,
+                      })
+                    );
+                  }}
+                />
+              </div>
+              <Styled.PresentWrapper>
+                <Label htmlFor='endDate'>End date: </Label>
+                <Styled.DateInput
+                  type='date'
+                  placeholder='Enter your end date'
+                  name='endDate'
+                  disabled={education.present}
+                  value={education.present ? '' : education.endDate}
+                  onChange={(e) => {
+                    dispatch(
+                      updateEducation({
+                        id: education.id,
+                        [e.target.name]: e.target.value,
+                      })
+                    );
+                  }}
+                />
+                {/* <Present education={education} /> TODO: convert Present to TS */}
+              </Styled.PresentWrapper>
+            </Styled.DateWrapper>
+            <div>
+              <Label htmlFor='City'>City: </Label>
+              <Input
+                placeholder='Enter your City'
+                name='City'
+                value={education.city}
+                handler={(e) => {
+                  dispatch(
+                    updateEducation({
+                      id: education.id,
+                      [e.target.name]: e.target.value,
+                    })
+                  );
+                }}
+              />
+            </div>
+            <div style={{ gridColumn: '1 / 3' }}>
+              <Label htmlFor='Description'>Description: </Label>
+              <Styled.Textarea
+                contentEditable
+                suppressContentEditableWarning={true}
+                placeholder='Enter your description'
+                role='textarea'
+                onInput={(e) => {
+                  dispatch(
+                    updateEducation({
+                      id: education.id,
+                      position: education.position,
+                      employer: education.employer,
+                      startDate: education.startDate,
+                      endDate: education.endDate,
+                      present: education.present,
+                      city: education.city,
                       description: e.currentTarget.textContent,
                     })
                   );

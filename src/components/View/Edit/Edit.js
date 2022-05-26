@@ -15,6 +15,7 @@ import Section from '../../Section/Section';
 import Skills from './Skills/Skills';
 import Languages from './Languges/Languages';
 import Employment from './Employment/Employment';
+import Education from './Education/Education';
 
 const Container = styled.div`
   width: 50%;
@@ -109,6 +110,7 @@ const Edit = () => {
           </InputWrapper>
         </Section>
         <Employment />
+        <Education />
         <Skills />
         <Languages />
       </form>
