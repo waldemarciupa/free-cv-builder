@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     paddingBottom: '20px',
-    borderBottom: '2px solid #f4f4f5',
   },
   image: {
     width: '100px',
@@ -90,6 +89,7 @@ const styles = StyleSheet.create({
   },
   aside: {
     borderRight: '2px solid #f4f4f5',
+    borderTop: '2px solid #f4f4f5',
     paddingTop: '20px',
     paddingRight: '16px',
     minHeight: '675px',
@@ -100,8 +100,13 @@ const styles = StyleSheet.create({
   },
   main: {
     paddingLeft: '20px',
-    paddingTop: '20px',
     width: '75%',
+    borderTop: '2px solid #f4f4f5',
+  },
+  mainBox: {
+    paddingTop: '20px',
+    borderBottom: '2px solid #f4f4f5',
+    paddingBottom: '14px',
   },
   headline: {
     fontSize: '12px',
@@ -217,43 +222,77 @@ export const Pdf = ({ profile }) => {
           </View>
           <View style={styles.main}>
             {profile.employments.length > 0 && (
-              <View>
+              <View style={styles.mainBox}>
                 <Text style={styles.headline}>Employment history</Text>
-                {profile.employments.map(
-                  (employment) =>
-                    employment.position.length > 0 && (
-                      <View key={employment.id} style={styles.paddingBottom}>
-                        <Text style={styles.paragraph}>
-                          {employment.position}
-                          {employment.employer && `, ${employment.employer}`}
-                          {employment.city && `, ${employment.city}`}
-                        </Text>
-                        {employment.startDate.length > 0 && (
-                          <Text style={styles.bottomField}>
-                            {employment.startDate.length > 0 &&
-                              new Intl.DateTimeFormat('en-US', {
-                                month: 'long',
-                              }).format(new Date(employment.startDate))}{' '}
-                            {employment.startDate.length > 0 &&
-                              new Date(employment.startDate).getFullYear()}
-                            {employment.endDate.length > 0 &&
-                              ' - ' +
-                                new Intl.DateTimeFormat('en-US', {
-                                  month: 'long',
-                                }).format(new Date(employment.endDate))}
-                            {employment.present && ' - Present'}
-                            {employment.endDate.length > 0 &&
-                              ' ' + new Date(employment.endDate).getFullYear()}
-                          </Text>
-                        )}
-                        {employment.description.length > 0 && (
-                          <Text style={styles.description}>
-                            {employment.description}
-                          </Text>
-                        )}
-                      </View>
-                    )
-                )}
+                {profile.employments.map((employment) => (
+                  <View key={employment.id} style={styles.paddingBottom}>
+                    <Text style={styles.paragraph}>
+                      {employment.position}
+                      {employment.employer && `, ${employment.employer}`}
+                      {employment.city && `, ${employment.city}`}
+                    </Text>
+                    {employment.startDate.length > 0 && (
+                      <Text style={styles.bottomField}>
+                        {employment.startDate.length > 0 &&
+                          new Intl.DateTimeFormat('en-US', {
+                            month: 'long',
+                          }).format(new Date(employment.startDate))}{' '}
+                        {employment.startDate.length > 0 &&
+                          new Date(employment.startDate).getFullYear()}
+                        {employment.endDate.length > 0 &&
+                          ' - ' +
+                            new Intl.DateTimeFormat('en-US', {
+                              month: 'long',
+                            }).format(new Date(employment.endDate))}
+                        {employment.present && ' - Present'}
+                        {employment.endDate.length > 0 &&
+                          ' ' + new Date(employment.endDate).getFullYear()}
+                      </Text>
+                    )}
+                    {employment.description.length > 0 && (
+                      <Text style={styles.description}>
+                        {employment.description}
+                      </Text>
+                    )}
+                  </View>
+                ))}
+              </View>
+            )}
+            {profile.educations.length > 0 && (
+              <View style={styles.mainBox}>
+                <Text style={styles.headline}>Education</Text>
+                {profile.educations.map((education) => (
+                  <View key={education.id} style={styles.paddingBottom}>
+                    <Text style={styles.paragraph}>
+                      {education.school}
+                      {education.degree && `, ${education.degree}`}
+                      {education.city && `, ${education.city}`}
+                    </Text>
+                    {education.startDate.length > 0 && (
+                      <Text style={styles.bottomField}>
+                        {education.startDate.length > 0 &&
+                          new Intl.DateTimeFormat('en-US', {
+                            month: 'long',
+                          }).format(new Date(education.startDate))}{' '}
+                        {education.startDate.length > 0 &&
+                          new Date(education.startDate).getFullYear()}
+                        {education.endDate.length > 0 &&
+                          ' - ' +
+                            new Intl.DateTimeFormat('en-US', {
+                              month: 'long',
+                            }).format(new Date(education.endDate))}
+                        {education.present && ' - Present'}
+                        {education.endDate.length > 0 &&
+                          ' ' + new Date(education.endDate).getFullYear()}
+                      </Text>
+                    )}
+                    {education.description.length > 0 && (
+                      <Text style={styles.description}>
+                        {education.description}
+                      </Text>
+                    )}
+                  </View>
+                ))}
               </View>
             )}
           </View>
