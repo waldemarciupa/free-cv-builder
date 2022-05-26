@@ -125,7 +125,7 @@ export const profileSlice = createSlice({
       });
     },
     addEducation: (state) => {
-      state.employments.push({
+      state.educations.push({
         id: Date.now(),
         school: '',
         degree: '',

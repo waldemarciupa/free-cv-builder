@@ -163,10 +163,10 @@ const Field = ({
         {employment && (
           <>
             <div>
-              <Label htmlFor='Position'>Position: </Label>
+              <Label htmlFor='position'>Position: </Label>
               <Input
                 placeholder='Enter your position'
-                name='Position'
+                name='position'
                 value={employment.position}
                 handler={(e) => {
                   dispatch(
@@ -179,10 +179,10 @@ const Field = ({
               />
             </div>
             <div>
-              <Label htmlFor='Employer'>Employer: </Label>
+              <Label htmlFor='employer'>Employer: </Label>
               <Input
                 placeholder='Enter your employer'
-                name='Employer'
+                name='employer'
                 value={employment.employer}
                 handler={(e) => {
                   dispatch(
@@ -233,10 +233,10 @@ const Field = ({
               </Styled.PresentWrapper>
             </Styled.DateWrapper>
             <div>
-              <Label htmlFor='City'>City: </Label>
+              <Label htmlFor='city'>City: </Label>
               <Input
                 placeholder='Enter your City'
-                name='City'
+                name='city'
                 value={employment.city}
                 handler={(e) => {
                   dispatch(
@@ -249,7 +249,7 @@ const Field = ({
               />
             </div>
             <div style={{ gridColumn: '1 / 3' }}>
-              <Label htmlFor='Description'>Description: </Label>
+              <Label htmlFor='description'>Description: </Label>
               <Styled.Textarea
                 contentEditable
                 suppressContentEditableWarning={true}
@@ -270,17 +270,17 @@ const Field = ({
                   );
                 }}
               />
-              <Styled.Input name='Description' aria-label='hidden' />
+              <Styled.Input name='description' aria-label='hidden' />
             </div>
           </>
         )}
         {education && (
           <>
             <div>
-              <Label htmlFor='School'>School: </Label>
+              <Label htmlFor='school'>School: </Label>
               <Input
                 placeholder='Enter your school'
-                name='School'
+                name='school'
                 value={education.school}
                 handler={(e) => {
                   dispatch(
@@ -293,10 +293,10 @@ const Field = ({
               />
             </div>
             <div>
-              <Label htmlFor='Degree'>Degree: </Label>
+              <Label htmlFor='degree'>Degree: </Label>
               <Input
                 placeholder='Enter your degree'
-                name='Degree'
+                name='degree'
                 value={education.degree}
                 handler={(e) => {
                   dispatch(
@@ -347,10 +347,10 @@ const Field = ({
               </Styled.PresentWrapper>
             </Styled.DateWrapper>
             <div>
-              <Label htmlFor='City'>City: </Label>
+              <Label htmlFor='city'>City: </Label>
               <Input
                 placeholder='Enter your City'
-                name='City'
+                name='city'
                 value={education.city}
                 handler={(e) => {
                   dispatch(
@@ -363,7 +363,7 @@ const Field = ({
               />
             </div>
             <div style={{ gridColumn: '1 / 3' }}>
-              <Label htmlFor='Description'>Description: </Label>
+              <Label htmlFor='description'>Description: </Label>
               <Styled.Textarea
                 contentEditable
                 suppressContentEditableWarning={true}
@@ -384,7 +384,7 @@ const Field = ({
                   );
                 }}
               />
-              <Styled.Input name='Description' aria-label='hidden' />
+              <Styled.Input name='description' aria-label='hidden' />
             </div>
           </>
         )}
